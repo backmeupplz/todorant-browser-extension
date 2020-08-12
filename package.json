@@ -1,0 +1,64 @@
+{
+  "name": "cool-extension",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build && cp manifest.json dist/",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@types/chrome": "^0.0.122",
+    "@types/crypto-js": "^3.1.47",
+    "@types/linkify-it": "^2.1.0",
+    "axios": "^0.19.2",
+    "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "linkify-it": "^3.0.2",
+    "material-design-icons-iconfont": "^5.0.1",
+    "pug-plain-loader": "^1.0.0",
+    "tlds": "^1.208.0",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.5",
+    "vue-i18n": "^8.20.0",
+    "vue-property-decorator": "^8.4.2",
+    "vue-telegram-login": "^2.1.0",
+    "vuetify": "^2.2.11",
+    "vuex": "^3.4.0",
+    "vuex-class": "^0.3.2",
+    "vuex-module-decorators": "^0.17.0",
+    "vuex-persistedstate": "^3.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-typescript": "~4.4.0",
+    "@vue/cli-plugin-vuex": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "typescript": "~3.9.3",
+    "vue-cli-plugin-vuetify": "~2.0.7",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.3.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "pluginSearchDirs": [
+      "."
+    ],
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
