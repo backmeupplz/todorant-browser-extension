@@ -1,23 +1,21 @@
 import { AES, enc } from 'crypto-js'
 import store from '@/store'
-import { getModule } from 'vuex-module-decorators'
-import UserStore from '@/store/modules/UserStore'
 
 export function encrypt(str: string) {
-  if (!getModule(UserStore, store).password) {
+  if (!(store as any).state.UserStore.password) {
     return str
   } else {
-    return _e(str, getModule(UserStore, store).password as string)
+    return _e(str, (store as any).state.UserStore.password as string)
   }
 }
 
 export function decrypt(str: string, encrypted = false) {
-  if (!getModule(UserStore, store).password && !encrypted) {
+  if (!(store as any).state.UserStore.password && !encrypted) {
     return str
   } else {
-    return !getModule(UserStore, store).password
+    return !(store as any).state.UserStore.password
       ? ''
-      : _d(str, getModule(UserStore, store).password as string)
+      : _d(str, (store as any).state.UserStore.password as string)
   }
 }
 

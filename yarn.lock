@@ -162,6 +162,11 @@
   resolved "https://registry.yarnpkg.com/@types/har-format/-/har-format-1.2.4.tgz#3275842095abb60d14b47fa798cc9ff708dab6d4"
   integrity sha512-iUxzm1meBm3stxUMzRqgOVHjj4Kgpgu5w9fm4X7kPRfSgVRzythsucEN7/jtOo8SQzm+HfcxWWzJS0mJDH/3DQ==
 
+"@types/js-cookie@^2.2.6":
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.6.tgz#f1a1cb35aff47bc5cfb05cb0c441ca91e914c26f"
+  integrity sha512-+oY0FDTO2GYKEV0YPvSshGq9t7YozVkgvXLty7zogQNuCxBhT9/3INX9Q7H1aRZ4SUDRXAKlJuA4EA5nTt7SNw==
+
 "@types/json-schema@^7.0.4":
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
@@ -3765,6 +3770,11 @@ jest-worker@^25.4.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+js-cookie@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
+  integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
+
 js-message@1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/js-message/-/js-message-1.0.5.tgz#2300d24b1af08e89dd095bc1a4c9c9cfcb892d15"
@@ -6941,11 +6951,6 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-apple-signin@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/vue-apple-signin/-/vue-apple-signin-0.1.2.tgz#1bdf2e245e0a351a15392c00115369bc3a44cf06"
-  integrity sha512-8ceeZlHZleIaJ3LFRxWCG+FXsaFUlNn98R2JoN7xnAqWgnobgT4IcvjwV9U+eYw1eRYLN3WezD7miYz6tNdgNA==
-
 vue-class-component@^7.1.0, vue-class-component@^7.2.5:
   version "7.2.5"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.2.5.tgz#212b3548c4fdd3314774c4adbc1c3792a40b52d0"
@@ -6959,21 +6964,6 @@ vue-cli-plugin-vuetify@~2.0.7:
     null-loader "^3.0.0"
     semver "^7.1.2"
     shelljs "^0.8.3"
-
-vue-confetti@^2.0.9:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/vue-confetti/-/vue-confetti-2.0.9.tgz#8a841b98884ae12ae6174cbef9c14a8cc55b7d71"
-  integrity sha512-sTOpKfVtNmwzoqhcOK7b/74pIBtuuvMcNjndC4py2a0R1eu7M5E/vJ78yWg+AamwCw8NZNtjOqUUZ9k7I7DC7A==
-
-vue-google-signin-button-directive@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/vue-google-signin-button-directive/-/vue-google-signin-button-directive-1.0.3.tgz#5d4fb188e85be05596647cb3d719bda457c7f21d"
-  integrity sha512-S2gG+Zu+E+B/IoyXfbz/AixVrvZhnXU+G83bTtzhUAO9RaMg597G3XUpZOHHdgWBc/Szys/kHSbPXlONjR4wjQ==
-
-vue-google-signin-button@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/vue-google-signin-button/-/vue-google-signin-button-1.0.4.tgz#733e9fea786ff730278c8eef8be9f594adc8d7b8"
-  integrity sha512-spmf+qPQQ1zAEndDxybYsf22U47eYPuvU9cb1N9YETmPQ4+UBG9ALLxgID1mHkusvBVclRyxmvJc3zc7hD56wg==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

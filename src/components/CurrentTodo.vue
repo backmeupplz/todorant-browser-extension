@@ -8,7 +8,7 @@ v-container(
         rounded,
         :value='progress',
         height='25',
-        :color='"blue lighten-3"',
+        :color='dark ? undefined : "blue lighten-3"',
         :loading='todoUpdating'
       )
         template(v-slot='{ value }')
@@ -16,7 +16,7 @@ v-container(
       v-spacer.px-2
     v-list-item
       v-list-item-content(v-if='!!todo')
-        v-card.grey(:class='$vuetify.theme.dark ? "darken-2" : "lighten-4"')
+        v-card.grey(:class='dark ? "darken-2" : "lighten-4"')
           v-card-text
             TodoText(
               :todo='todo',
@@ -24,27 +24,27 @@ v-container(
               :errorDecrypting='errorDecrypting'
             )
             v-card-actions
-            v-icon.grey--text.pl-2(small, v-if='todo.encrypted') vpn_key
-            v-icon.grey--text.pl-2(small, v-if='todo.skipped') arrow_forward
-            v-spacer
-            v-btn(text, icon, :loading='loading', @click='deleteTodo')
-              v-icon delete
-            v-btn.ma-0(
-              text,
-              icon,
-              @click='skipTodo',
-              :loading='loading',
-              v-if='incompleteTodosCount > 1 && !todo.frog && !todo.time'
-            )
-              v-icon arrow_right_alt
-            v-btn.ma-0(
-              text,
-              icon,
-              @click='completeTodo()',
-              :loading='loading',
-              @shortkey='completeTodo(true)'
-            )
-              v-icon done
+              v-icon.grey--text.pl-2(small, v-if='todo.encrypted') vpn_key
+              v-icon.grey--text.pl-2(small, v-if='todo.skipped') arrow_forward
+              v-spacer
+              v-btn(text, icon, :loading='loading', @click='deleteTodo')
+                v-icon delete
+              v-btn.ma-0(
+                text,
+                icon,
+                @click='skipTodo',
+                :loading='loading',
+                v-if='incompleteTodosCount > 1 && !todo.frog && !todo.time'
+              )
+                v-icon arrow_right_alt
+              v-btn.ma-0(
+                text,
+                icon,
+                @click='completeTodo()',
+                :loading='loading',
+                @shortkey='completeTodo(true)'
+              )
+                v-icon done
     v-list-item
       v-list-item-content.text-center.mt-4(
         v-if='!todo && !loading && !todoUpdating && todosCount > 0'
@@ -69,13 +69,13 @@ import TodoText from '@/components/TodoText.vue'
 import { Watch } from 'vue-property-decorator'
 import * as api from '@/utils/api'
 import { decrypt } from '@/utils/encryption'
-// import { i18n } from '@/plugins/i18n'
-// import { playSound, Sounds } from '@/utils/sounds'
+import { i18n } from '@/plugins/i18n'
+import { playSound, Sounds } from '@/utils/sounds'
 import { namespace } from 'vuex-class'
 import { User } from '@/models/User'
 
 const UserStore = namespace('UserStore')
-const SettingsStore = namespace('SettingsStore')
+const AppStore = namespace('AppStore')
 
 @Component({
   components: {
@@ -84,7 +84,7 @@ const SettingsStore = namespace('SettingsStore')
 })
 export default class CurrentTodo extends Vue {
   @UserStore.State user?: User
-  @SettingsStore.State hotKeysEnabled!: boolean
+  @AppStore.State dark?: Boolean
 
   showCompleted = false
   todo: Todo | null = null
@@ -98,7 +98,9 @@ export default class CurrentTodo extends Vue {
 
   get text() {
     if (this.todo?.encrypted) {
-      return decrypt(this.todo?.text, true) //|| i18n.t('encryption.errorDecrypting')
+      return (
+        decrypt(this.todo?.text, true) || i18n.t('encryption.errorDecrypting')
+      )
     } else {
       return this.todo?.text
     }
@@ -155,11 +157,11 @@ export default class CurrentTodo extends Vue {
     this.loading = true
     try {
       await api.completeTodo(user, this.todo)
-      //   if (this.todo.frog) {
-      //     await playSound(Sounds.frogDone)
-      //   } else {
-      //     await playSound(Sounds.taskDone)
-      //   }
+      if (this.todo.frog) {
+        await playSound(Sounds.frogDone)
+      } else {
+        await playSound(Sounds.taskDone)
+      }
       this.updateTodo()
     } catch (err) {
       alert(err)
