@@ -8,13 +8,9 @@
     "48": "img/Icon-48.png",
     "128": "img/Icon-128.png"
   },
-  "permissions": ["identity", "tabs", "storage", "cookies", "http://localhost/*", "https://localhost/*"],
-  "browser_action": {
-    "default_title": "todorant"
-  },
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+  "permissions": ["storage", "cookies", "http://localhost/*", "https://localhost/*"],
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
   },
   "short_name": "Todorant",
   "key": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8AbJVn3iOmZ661Dy6CE+4h0LI8wt0XzSCf5wUtZlXkcjqQbJU2oCQpYDcV3esEF/ftE3t3RPUOqfqU787xCfvcm+LWpbaC5IICxrDscuGT3/vNMsp1qMCnic91N6mm4pxATLJOk3bP3lP2PaKzE9SqNsW+WLQp2dX71SrqFRsME40lrdP57mCXHeAEMpOkTwRgOH5Mi+HpmlXmsnk9eLIfzC8snprBq8HU8XVmCXT+NAZE9tUrh8jZu4cxzb5oYBDto9YmW7C6Guh44IDNBAIRhhVtAKRo7uhodjPfeDtHSH7cMRiT7P58MQUMpikFPLEyIDWpP1BhRKCpMO8dldkwIDAQAB-----END PUBLIC KEY-----"

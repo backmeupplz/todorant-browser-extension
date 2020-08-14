@@ -1,5 +1,6 @@
 <template lang="pug">
-  v-app(:style='style')
+div(:style='style')
+  v-app
     v-maind.d-flex.flex-column.align-center
       v-img(:src='"img/logo.png"' :height='60', :width='240')
       CurrentTodo
@@ -20,9 +21,9 @@ export default class App extends Vue {
   @AppStore.State dark?: Boolean
 
   beforeCreate() {
+    setTheme()
     setPassword()
     login()
-    setTheme()
   }
 
   get style() {
