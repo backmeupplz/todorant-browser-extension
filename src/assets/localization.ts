@@ -15,8 +15,7 @@ export const messages = {
       errorDecrypting: 'Неправильный пароль расшифровки',
       repeatPassword: 'Повторите пароль',
     },
-    notLogginedHeader: 'Вы не залогинены :(',
-    notLogginedBody: 'Пожалуйста, перейдите на todorant.com и авторизуйтесь',
+    notLogginedBody: 'Пожалуйста, перейдите на todorant.com и авторизуйтесь ',
     search: 'Поиск',
     qr: {
       code: 'QR код',
@@ -482,8 +481,7 @@ export const messages = {
       errorDecrypting: 'Wrong decryption password',
       repeatPassword: 'Repeat password',
     },
-    notLogginedHeader: "You're not loggined :(",
-    notLogginedBody: 'Please, go to todorant.com and log in',
+    notLogginedBody: 'Please, login at ',
     search: 'Search',
     qr: {
       code: 'QR code',

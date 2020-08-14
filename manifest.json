@@ -1,15 +1,21 @@
-{ 
+{
   "manifest_version": 2,
   "name": "Todorant",
   "version": "1.0",
   "description": "Use cognitive psychology to trick your brain into getting things done with the only To Do manager you will ever need.",
-  "icons": { 
+  "icons": {
     "16": "img/Icon-16.png",
     "48": "img/Icon-48.png",
     "128": "img/Icon-128.png"
   },
-  "permissions": ["storage", "cookies", "http://localhost/*", "https://localhost/*"],
-  "chrome_url_overrides" : {
+  "permissions": [
+    "storage",
+    "cookies",
+    "http://localhost/*",
+    "https://localhost/*",
+    "https://*.todorant.com/*"
+  ],
+  "chrome_url_overrides": {
     "newtab": "index.html"
   },
   "short_name": "Todorant",

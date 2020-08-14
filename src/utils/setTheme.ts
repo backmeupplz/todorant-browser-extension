@@ -11,7 +11,7 @@ export function setTheme() {
     { url: appUrl, name: 'dark' },
     (cookie: chrome.cookies.Cookie | null) => {
       const dark = cookie?.value !== 'true'
-      getModule(AppStore, store).setDark(dark)
+      getModule(AppStore, store).setDark(dark === null || undefined ? true : dark)
     }
   )
 }

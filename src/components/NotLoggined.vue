@@ -5,8 +5,11 @@ v-container(
   v-list
     v-list-item
       v-list-item-content.text-center.mt-4
-        span.headline {{ $t("notLogginedHeader") }}
-        span.body-1 {{ $t("notLogginedBody") }}
+        span.display-3 🤔
+        .text-center.mt-4
+          span.headline {{ $t("notLogginedBody") }}
+          a(href='https://todorant.com')
+            span.headline todorant.com
 </template>
 
 <script lang="ts">
