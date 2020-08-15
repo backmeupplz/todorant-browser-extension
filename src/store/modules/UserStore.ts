@@ -14,7 +14,7 @@ export default class UserStore extends VuexModule {
   password?: String = undefined
 
   @Mutation
-  setUser(user: User): void {
+  setUser(user: User | undefined): void {
     this.user = user
   }
 

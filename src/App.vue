@@ -2,7 +2,7 @@
 v-app
   v-maind(:style='style')
     div.d-flex.flex-column.align-center
-      v-img(:src='"img/logo.png"' :height='60', :width='240')
+      v-img.pt-4(:src='"img/logo.png"' :height='60', :width='240')
       CurrentTodo(v-if='!!user')
       NotLoggined(v-else)
 </template>
@@ -13,20 +13,16 @@ import CurrentTodo from '@/components/CurrentTodo.vue'
 import NotLoggined from '@/components/NotLoggined.vue'
 import { User } from '@/models/User'
 import { login } from '@/utils/login'
-import { setPassword } from '@/utils/setPassword'
-import { setTheme } from '@/utils/setTheme'
 
 const UserStore = namespace('UserStore')
 const AppStore = namespace('AppStore')
 
 @Component({ components: { CurrentTodo, NotLoggined } })
 export default class App extends Vue {
-  @UserStore.State user!: User
+  @UserStore.State user!: User | undefined
   @AppStore.State dark!: boolean
 
-  beforeCreate() {
-    setTheme()
-    setPassword()
+  created() {
     login()
   }
 
