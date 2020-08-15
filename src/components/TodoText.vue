@@ -1,5 +1,10 @@
 <template lang="pug">
-.flex-grow-1
+.flex-grow-1(style='max-width: 100%;')
+  p(v-if='todo.delegator')
+    span {{ todo.delegator.name }}
+    span(v-if='delegateScreen') : {{ todo.monthAndYear }}{{ todo.date ? `-${todo.date}` : "" }}
+  span(v-if='debug') ({{ todo.order }})
+  span(v-if='debug') ({{ todo.frogFails }})
   span(v-if='!!todo.frog') 🐸{{ " " }}
   span(v-if='!!todo.time') {{ todo.time }}{{ " " }}
   span(
@@ -28,6 +33,7 @@ import { Todo } from '@/models/Todo'
 import { namespace } from 'vuex-class'
 import { TagColors } from '@/models/TagColors'
 
+const AppStore = namespace('AppStore')
 const TagsStore = namespace('TagsStore')
 
 @Component
@@ -36,10 +42,11 @@ export default class TodoText extends Vue {
   @Prop({ required: true }) text!: string
   @Prop({ required: true }) errorDecrypting!: boolean
 
+  @AppStore.State dark?: boolean
   @TagsStore.State tagColors!: TagColors
 
   colorForTag(tag: string) {
-    return this.tagColors[tag] || '#1E88E5'
+    return this.tagColors[tag] || (this.dark ? '#64B5F6' : '#1E88E5')
   }
 
   get linkifiedText() {
@@ -49,13 +56,6 @@ export default class TodoText extends Vue {
 
   get debug() {
     return !!process.env.VUE_APP_DEV
-  }
-
-  hash(hash: string) {
-    if (!location.hash.includes(hash)) {
-      let hashesString = location.hash == '' ? hash : `,${hash}`
-      location.hash += hashesString
-    }
   }
 }
 </script>

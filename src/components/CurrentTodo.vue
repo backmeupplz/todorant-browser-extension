@@ -1,8 +1,8 @@
 <template lang="pug">
 v-container(
-  style='maxWidth: 1000px; minWidth: 250px;',
+  style='maxWidth: 1000px;',
 )
-  v-list
+  v-list(:color='dark ? "#303030" : "#fafafa"')
     v-list-item
       v-progress-linear(
         rounded,
@@ -13,7 +13,9 @@ v-container(
       )
         template(v-slot='{ value }')
           span.caption {{ todosCount - incompleteTodosCount }}/{{ todosCount }}
-      v-spacer.px-2
+        v-spacer.px-2
+      v-btn(text, icon, :loading='todoUpdating', @click='updateTodo')
+        v-icon refresh
     v-list-item
       v-list-item-content(v-if='!!todo')
         v-card.grey(:class='dark ? "darken-2" : "lighten-4"')
@@ -23,29 +25,28 @@ v-container(
               :text='text',
               :errorDecrypting='errorDecrypting'
             )
-            v-card-actions
-              v-icon.grey--text.pl-2(small, v-if='todo.encrypted') vpn_key
-              v-icon.grey--text.pl-2(small, v-if='todo.skipped') arrow_forward
-              v-spacer
-              v-btn(text, icon, :loading='loading', @click='deleteTodo')
-                v-icon delete
-              v-btn.ma-0(
-                text,
-                icon,
-                @click='skipTodo',
-                :loading='loading',
-                v-if='incompleteTodosCount > 1 && !todo.frog && !todo.time'
-              )
-                v-icon arrow_right_alt
-              v-btn.ma-0(
-                text,
-                icon,
-                @click='completeTodo()',
-                :loading='loading',
-                @shortkey='completeTodo(true)'
-              )
-                v-icon done
-    v-list-item
+          v-card-actions
+            v-icon.grey--text.pl-2(small, v-if='todo.encrypted') vpn_key
+            v-icon.grey--text.pl-2(small, v-if='todo.skipped') arrow_forward
+            v-spacer
+            v-btn(text, icon, :loading='loading', @click='deleteTodo')
+              v-icon delete
+            v-btn.ma-0(
+              text,
+              icon,
+              @click='skipTodo',
+              :loading='loading',
+              v-if='incompleteTodosCount > 1 && !todo.frog && !todo.time'
+            )
+              v-icon arrow_right_alt
+            v-btn.ma-0(
+              text,
+              icon,
+              @click='completeTodo()',
+              :loading='loading',
+              @shortkey='completeTodo(true)'
+            )
+              v-icon done
       v-list-item-content.text-center.mt-4(
         v-if='!todo && !loading && !todoUpdating && todosCount > 0'
       )
@@ -84,7 +85,7 @@ const AppStore = namespace('AppStore')
 })
 export default class CurrentTodo extends Vue {
   @UserStore.State user?: User
-  @AppStore.State dark?: Boolean
+  @AppStore.State dark!: boolean
 
   showCompleted = false
   todo: Todo | null = null

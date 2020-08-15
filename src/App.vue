@@ -1,7 +1,7 @@
 <template lang="pug">
-div(:style='style')
-  v-app
-    v-maind.d-flex.flex-column.align-center
+v-app
+  v-maind(:style='style')
+    div.d-flex.flex-column.align-center
       v-img(:src='"img/logo.png"' :height='60', :width='240')
       CurrentTodo(v-if='!!user')
       NotLoggined(v-else)
@@ -21,8 +21,8 @@ const AppStore = namespace('AppStore')
 
 @Component({ components: { CurrentTodo, NotLoggined } })
 export default class App extends Vue {
-  @AppStore.State dark?: Boolean
   @UserStore.State user!: User
+  @AppStore.State dark!: boolean
 
   beforeCreate() {
     setTheme()
@@ -31,8 +31,11 @@ export default class App extends Vue {
   }
 
   get style() {
+    this.$vuetify.theme.dark = this.dark
     return {
       'background-color': this.dark ? '#303030' : '#fafafa',
+      width: '100%',
+      height: '100%',
     }
   }
 }
