@@ -2,7 +2,7 @@
 v-app
   v-maind(:style='style')
     div.d-flex.flex-column.align-center
-      v-img.pt-4(:src='"img/logo.png"' :height='60', :width='240')
+      v-img.mt-8(:src='"img/logo.png"' :height='60', :width='240')
       CurrentTodo(v-if='!!user')
       NotLoggined(v-else)
 </template>
