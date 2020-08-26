@@ -2,7 +2,7 @@
 v-app
   v-maind(:style='style')
     div.d-flex.flex-column.align-center
-      v-img.mt-8(:src='"img/logo.png"' :height='60', :width='240')
+      v-img.mt-8.logo(:src='"img/logo.png"' :height='60', :width='240' @click='goToTodorant')
       CurrentTodo(v-if='!!user')
       NotLoggined(v-else)
 </template>
@@ -34,11 +34,20 @@ export default class App extends Vue {
       height: '100%',
     }
   }
+
+  goToTodorant() {
+    window.location.href =
+      process.env.VUE_APP_FRONTEND || 'https://todorant.com'
+  }
 }
 </script>
 
 <style>
 .image {
   max-width: 240px;
+}
+.logo {
+  cursor: pointer;
+  outline: none;
 }
 </style>

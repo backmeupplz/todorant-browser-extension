@@ -74,6 +74,7 @@ import { i18n } from '@/plugins/i18n'
 import { playSound, Sounds } from '@/utils/sounds'
 import { namespace } from 'vuex-class'
 import { User } from '@/models/User'
+import { alertError } from '@/utils/alertError'
 
 const UserStore = namespace('UserStore')
 const AppStore = namespace('AppStore')
@@ -141,7 +142,7 @@ export default class CurrentTodo extends Vue {
       this.incompleteTodosCount = fetched.incompleteTodosCount
       this.todosCount = fetched.todosCount
     } catch (err) {
-      alert(err)
+      alertError(err)
     } finally {
       this.todoUpdating = false
     }
@@ -165,7 +166,7 @@ export default class CurrentTodo extends Vue {
       }
       this.updateTodo()
     } catch (err) {
-      alert(err)
+      alertError(err)
     } finally {
       this.loading = false
     }
@@ -188,7 +189,7 @@ export default class CurrentTodo extends Vue {
       await api.skipTodo(user, this.todo)
       this.updateTodo()
     } catch (err) {
-      alert(err)
+      alertError(err)
     } finally {
       this.loading = false
     }
