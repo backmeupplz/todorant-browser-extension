@@ -80,6 +80,16 @@ export async function skipTodo(user: User, todo: Todo) {
   )
 }
 
+export async function deleteTodo(todo: Todo) {
+  const user = (store as any).state.UserStore.user
+  if (!user) {
+    throw new Error('No user')
+  }
+  return axios.delete(`${base}/todo/${todo._id}`, {
+    headers: getHeaders(user),
+  })
+}
+
 export async function getTodos(
   user: User,
   completed: boolean = false,

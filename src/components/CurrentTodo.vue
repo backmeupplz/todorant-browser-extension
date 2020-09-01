@@ -59,6 +59,7 @@ v-container(
         span.display-3 🐝
         span.headline {{ $t("empty.action") }}
         span.body-1 {{ $t("empty.text") }}
+  DeleteTodo(:todo='todoDeleted')
 </template>
 
 <script lang="ts">
@@ -67,6 +68,7 @@ import Component from 'vue-class-component'
 import { Todo } from '@/models/Todo'
 import { getTodos, editTodo } from '@/utils/api'
 import TodoText from '@/components/TodoText.vue'
+import DeleteTodo from '@/components/DeleteTodo.vue'
 import { Watch } from 'vue-property-decorator'
 import * as api from '@/utils/api'
 import { decrypt } from '@/utils/encryption'
@@ -82,6 +84,7 @@ const AppStore = namespace('AppStore')
 @Component({
   components: {
     TodoText,
+    DeleteTodo,
   },
 })
 export default class CurrentTodo extends Vue {
