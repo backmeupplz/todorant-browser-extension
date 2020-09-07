@@ -39,6 +39,19 @@ v-container(
               v-if='incompleteTodosCount > 1 && !todo.frog && !todo.time'
             )
               v-icon arrow_right_alt
+            v-tooltip.ml-4(:max-width='300', bottom)
+              template(v-slot:activator='{ on }')
+                v-btn(
+                  text,
+                  icon,
+                  @click='addTodo()',
+                  :loading='loading',
+                  v-on='on',
+                  v-shortkey.once='{ en: ["b"], ru: ["и"] }',
+                  @shortkey='addTodo(true)'
+                )
+                  v-icon list
+              span {{ $t("breakdownInfo") }}
             v-btn.ma-0(
               text,
               icon,
@@ -60,6 +73,7 @@ v-container(
         span.headline {{ $t("empty.action") }}
         span.body-1 {{ $t("empty.text") }}
   DeleteTodo(:todo='todoDeleted')
+  AddTodo
 </template>
 
 <script lang="ts">
@@ -69,6 +83,7 @@ import { Todo } from '@/models/Todo'
 import { getTodos, editTodo } from '@/utils/api'
 import TodoText from '@/components/TodoText.vue'
 import DeleteTodo from '@/components/DeleteTodo.vue'
+import AddTodo from '@/components/AddTodo.vue'
 import { Watch } from 'vue-property-decorator'
 import * as api from '@/utils/api'
 import { decrypt } from '@/utils/encryption'
@@ -77,6 +92,7 @@ import { playSound, Sounds } from '@/utils/sounds'
 import { namespace } from 'vuex-class'
 import { User } from '@/models/User'
 import { alertError } from '@/utils/alertError'
+import { serverBus } from '@/main'
 
 const UserStore = namespace('UserStore')
 const AppStore = namespace('AppStore')
@@ -85,6 +101,7 @@ const AppStore = namespace('AppStore')
   components: {
     TodoText,
     DeleteTodo,
+    AddTodo,
   },
 })
 export default class CurrentTodo extends Vue {
@@ -130,6 +147,10 @@ export default class CurrentTodo extends Vue {
 
   beforeMount() {
     this.updateTodo()
+  }
+
+  addTodo() {
+    serverBus.$emit('addTodoRequested', undefined, this.todo)
   }
 
   todoUpdating = false
