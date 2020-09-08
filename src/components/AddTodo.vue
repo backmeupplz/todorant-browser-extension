@@ -1,0 +1,278 @@
+<template lang="pug">
+div
+  v-dialog(v-model='dialog', persistent, scrollable, max-width='600px')
+    v-form(ref='form')
+      v-card
+        v-card-title
+          span.headline {{ $t("todo.create.title") }}
+          v-spacer
+          v-tooltip(bottom, :max-width='300')
+            template(v-slot:activator='{ on }')
+              v-icon(v-on='on') info
+            span {{ $t("todo.create.tooltip") }}
+        v-card-text
+          v-container
+            .d-flex.justify-space-between
+              p.todoText(
+                v-if='!!todoToBreakdown',
+                :class='isEncryptionWrong(todoToBreakdown) ? "grey--text" : ""'
+              ) {{ textForTodo(todoToBreakdown) }}
+              v-btn(
+                v-if='!!todoToBreakdown',
+                icon,
+                v-clipboard:copy='!todoToBreakdown ? "no-todo" : textForTodo(todoToBreakdown)'
+              )
+                v-icon(small) assignment
+            v-expansion-panels(multiple, v-model='panel')
+              v-flex
+                draggable(v-model='todos', handle='.handle')
+                  v-expansion-panel(v-for='(todo, i) in todos', :key='i')
+                    v-expansion-panel-header
+                      v-flex.column
+                        span {{ !panel.includes(i) ? `${todo.frog ? "🐸 " : ""}${todo.time ? `${todo.time} ` : ""}` : "" }}{{ panel.includes(i) || !todo.text ? $t("todo.create.placeholder") : todo.text }}
+                        p.my-0.caption(v-if='!panel.includes(i) && todo.date') {{ todo.date }}
+                      v-row-reverse
+                        .d-flex.justify-end.ma-2
+                          v-icon.handle(v-if='todos.length > 1') menu
+                    v-expansion-panel-content
+                      TodoForm(
+                        :todo='todo',
+                        :enterPressed='save',
+                        :escapePressed='escapePressed',
+                        :addTodo='addTodo',
+                        ref='todoForm'
+                      )
+                        v-btn(
+                          v-if='todos.length > 1',
+                          color='error',
+                          text,
+                          @click='deleteTodo(i)'
+                        ) {{ $t("delete") }}
+        v-card-actions
+          v-btn(
+            color='blue',
+            text,
+            @click='addTodo',
+            v-shortkey.once='{ en: ["ctrl", "shift", "a"], ru: ["ctrl", "shift", "ф"] }',
+            @shortkey='addTodo'
+          )
+            v-icon add
+          v-spacer
+          v-btn(
+            color='error',
+            text,
+            @click='close',
+            :disabled='loading',
+            v-shortkey.once='["esc"]',
+            @shortkey='close'
+          ) {{ $t("cancel") }}
+          v-btn(
+            color='blue',
+            text,
+            @click='save',
+            :loading='loading',
+            v-shortkey.once='["enter"]',
+            @shortkey='save'
+          ) {{ $t("save") }}
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Watch, Prop } from 'vue-property-decorator'
+import TodoForm from '@/components/TodoForm.vue'
+import { Todo } from '@/models/Todo'
+import * as api from '@/utils/api'
+import { serverBus } from '@/main'
+import { linkify } from '@/utils/linkify'
+import { encrypt, decrypt } from '@/utils/encryption'
+import { i18n } from '@/plugins/i18n'
+import { namespace } from 'vuex-class'
+import { SubscriptionStatus } from '@/models/SubscriptionStatus'
+import { User } from '@/models/User'
+import draggable from 'vuedraggable'
+import { alertError } from '@/utils/alertError'
+
+const UserStore = namespace('UserStore')
+
+@Component({
+  components: { TodoForm, draggable },
+})
+export default class AddTodo extends Vue {
+  @Prop({ required: true }) currentTab!: number
+
+  @UserStore.State subscriptionStatus!: SubscriptionStatus
+  @UserStore.State user?: User
+  @UserStore.State password?: string
+  @UserStore.State planning!: boolean
+
+  dialog = false
+
+  panel = [] as Number[]
+
+  todos = [] as Partial<Todo & { goFirst: boolean }>[]
+
+  loading = false
+
+  date = ''
+
+  todoToBreakdown: null | Todo = null
+
+  created() {
+    serverBus.$on(
+      'addTodoRequested',
+      (date?: string, todoToBreakdown?: Todo) => {
+        if (date) {
+          this.date = date
+        }
+        if (todoToBreakdown) {
+          this.todoToBreakdown = todoToBreakdown
+        }
+        this.dialog = true
+      }
+    )
+  }
+
+  @Watch('dialog')
+  onDialogChanged(val: boolean, oldVal: boolean) {
+    this.reset()
+    if (oldVal && !val) {
+      this.todoToBreakdown = null
+    }
+  }
+
+  openDialog(hotkey = false) {
+    if (this.subscriptionStatus === SubscriptionStatus.inactive) {
+      serverBus.$emit('subscriptionRequested')
+    } else {
+      this.dialog = true
+    }
+  }
+
+  reset() {
+    this.todos = []
+    this.addTodo()
+    this.panel = [0]
+    if (this.$refs.form) {
+      ;(this.$refs.form as any).resetValidation()
+    }
+    setTimeout(() => {
+      if (this.$refs.todoForm && (this.$refs.todoForm as any).length) {
+        ;(this.$refs.todoForm as any)[0].$refs.textInput.focus()
+      }
+    }, 500)
+  }
+
+  addTodo() {
+    let hashtags = [] as string[]
+    if (this.todoToBreakdown) {
+      let text = this.todoToBreakdown.text
+      if (this.todoToBreakdown.encrypted) {
+        text = decrypt(this.todoToBreakdown.text, true) || ''
+      }
+      const matches = linkify.match(text) || []
+    }
+    if (this.date) {
+      this.todos.push({
+        date: this.date,
+        goFirst: false,
+        text: hashtags.join(' '),
+      })
+    } else {
+      this.todos.push({
+        goFirst: false,
+        text: hashtags.join(' '),
+      })
+    }
+    this.panel = [this.todos.length - 1]
+  }
+
+  deleteTodo(i: number) {
+    this.todos.splice(i, 1)
+  }
+
+  async save() {
+    const user = this.user
+    if (!user) {
+      return
+    }
+    this.panel = []
+    this.todos.forEach((todo, i) => {
+      if (
+        !todo ||
+        !todo.text ||
+        !todo.text.trim() ||
+        (!todo.monthAndYear && !todo.date)
+      ) {
+        this.panel.push(i)
+      }
+    })
+    if (!(this.$refs.form as any).validate()) {
+      return
+    }
+    if (this.panel.length) {
+      return
+    }
+    this.loading = true
+    try {
+      await api.postTodos(
+        user,
+        this.todos.map(todo => {
+          const iTodo = { ...todo }
+          iTodo.text = iTodo.text!.trim()
+          if (!!this.password && !iTodo.delegate) {
+            iTodo.encrypted = true
+            iTodo.text = encrypt(iTodo.text)
+          }
+          return iTodo
+        })
+      )
+      if (this.todoToBreakdown) {
+        const tempTodo = this.todoToBreakdown
+        this.todoToBreakdown = null
+        await api.completeTodo(user, tempTodo)
+      }
+      this.dialog = false
+    } catch (err) {
+      alertError(err)
+    } finally {
+      this.loading = false
+    }
+  }
+
+  escapePressed() {
+    this.dialog = false
+  }
+
+  textForTodo(todo: Todo) {
+    if (todo.encrypted) {
+      return decrypt(todo.text, true) || i18n.t('encryption.errorDecrypting')
+    } else {
+      return todo.text
+    }
+  }
+
+  isEncryptionWrong(todo: Todo) {
+    if (todo.encrypted) {
+      return !decrypt(todo.text, true)
+    } else {
+      return false
+    }
+  }
+
+  close() {
+    this.date = ''
+    this.dialog = false
+  }
+}
+</script>
+
+<style lang="sass">
+// prettier-ignore
+@for $i from 1 through 50
+  @media screen and (min-width: (1000px + ($i * 100px))) and (max-width: 1100px + ($i * 100px))
+    .rightPadding
+      right: ((100 + ($i * 100)) / 2) !important
+.todoText
+  overflow-wrap: anywhere
+</style>

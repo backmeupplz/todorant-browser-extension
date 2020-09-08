@@ -90,6 +90,27 @@ export async function deleteTodo(todo: Todo) {
   })
 }
 
+export async function postTodos(user: User, todos: Partial<Todo>[]) {
+  return (
+    await axios.post(
+      `${base}/todo`,
+      todos.map(todo => {
+        const todoCopy = { ...todo }
+        if (todo.date) {
+          todoCopy.monthAndYear = todo.date.substr(0, 7)
+          todoCopy.date = todo.date.substr(8)
+        }
+        todoCopy.encrypted =
+          !!(store as any).state.UserStore.password && !todoCopy.delegate
+        return todoCopy
+      }),
+      {
+        headers: getHeaders(user),
+      }
+    )
+  ).data
+}
+
 export async function getTodos(
   user: User,
   completed: boolean = false,
