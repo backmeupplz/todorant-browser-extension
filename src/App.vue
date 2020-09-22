@@ -2,7 +2,7 @@
 v-app
   v-maind(:style='style')
     div.d-flex.flex-column.align-center
-      v-img.mt-8.logo(:src='"img/logo.png"' :height='60', :width='240' @click='goToTodorant')
+      v-img.mt-8.logo(:src='"img/logo-small.svg"', @click='goToTodorant')
       CurrentTodo(v-if='!!user')
       NotLoggined(v-else)
 </template>
@@ -29,7 +29,7 @@ export default class App extends Vue {
   get style() {
     this.$vuetify.theme.dark = this.dark
     return {
-      'background-color': this.dark ? '#303030' : '#fafafa',
+      'background-color': this.dark ? '#121212' : '#ffffff',
       width: '100%',
       height: '100%',
     }
@@ -49,5 +49,15 @@ export default class App extends Vue {
 .logo {
   cursor: pointer;
   outline: none;
+}
+
+* {
+  font-family: Montserrat;
+  white-space: pre-wrap;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: -0.24px;
 }
 </style>

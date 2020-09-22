@@ -1,77 +1,42 @@
 <template lang="pug">
 v-container(
   style='maxWidth: 1000px;',
+  :class='$vuetify.breakpoint.mdAndUp ? "pb-8" : ""'
 )
-  v-list(:color='dark ? "#303030" : "#fafafa"')
-    v-list-item
-      v-progress-linear(
-        rounded,
-        :value='progress',
-        height='25',
-        :color='dark ? undefined : "blue lighten-3"',
-        :loading='todoUpdating'
-      )
-        template(v-slot='{ value }')
-          span.caption {{ todosCount - incompleteTodosCount }}/{{ todosCount }}
-        v-spacer.px-2
-      v-btn(text, icon, :loading='todoUpdating', @click='updateTodo')
-        v-icon refresh
+  v-list(:style='backgroundColor').current-todo-content
+    v-text
+    ProgressBlock(
+      :updateTodo='updateTodo',
+      :completeEpic='completeEpic',
+      :loading='todoUpdating',
+      :incompleteTodosCount='incompleteTodosCount',
+      :todosCount='todosCount'
+    )
     v-list-item
       v-list-item-content(v-if='!!todo')
-        v-card.grey(:class='dark ? "darken-2" : "lighten-4"')
-          v-card-text
-            TodoText(
-              :todo='todo',
-              :text='text',
-              :errorDecrypting='errorDecrypting'
-            )
-          v-card-actions
-            v-icon.grey--text.pl-2(small, v-if='todo.encrypted') vpn_key
-            v-icon.grey--text.pl-2(small, v-if='todo.skipped') arrow_forward
-            v-spacer
-            v-btn(text, icon, :loading='loading', @click='deleteTodo')
-              v-icon delete
-            v-btn.ma-0(
-              text,
-              icon,
-              @click='skipTodo',
-              :loading='loading',
-              v-if='incompleteTodosCount > 1 && !todo.frog && !todo.time'
-            )
-              v-icon arrow_right_alt
-            v-tooltip.ml-4(:max-width='300', bottom)
-              template(v-slot:activator='{ on }')
-                v-btn(
-                  text,
-                  icon,
-                  @click='addTodo()',
-                  :loading='loading',
-                  v-on='on',
-                  v-shortkey.once='{ en: ["b"], ru: ["и"] }',
-                  @shortkey='addTodo(true)'
-                )
-                  v-icon list
-              span {{ $t("breakdownInfo") }}
-            v-btn.ma-0(
-              text,
-              icon,
-              @click='completeTodo()',
-              :loading='loading',
-              @shortkey='completeTodo(true)'
-            )
-              v-icon done
-      v-list-item-content.text-center.mt-4(
+        TodoCard(
+          type='current',
+          :deleteTodo='deleteTodo',
+          :skipTodo='skipTodo',
+          :addTodo='addTodo',
+          :completeTodo='completeTodo',
+          :repeat='completeTodo',
+          :edit='edit',
+          :todo='todo',
+          :loading='loading',
+          :incompleteTodosCount='incompleteTodosCount'
+        )
+      AllDonePlaceholder(
         v-if='!todo && !loading && !todoUpdating && todosCount > 0'
       )
-        span.display-3 🎉
-        span.headline {{ $t("clear.congratulations") }}
-        span.body-1 {{ $t("clear.text") }}
-      v-list-item-content.text-center.mt-4(
+      EmptyPlaceholder(
         v-if='!todo && !loading && !todoUpdating && todosCount === 0'
       )
-        span.display-3 🐝
-        span.headline {{ $t("empty.action") }}
-        span.body-1 {{ $t("empty.text") }}
+  EditTodo(
+    :todo='todoEdited',
+    :cleanTodo='cleanTodo',
+    :requestDelete='requestDelete'
+  )
   DeleteTodo(:todo='todoDeleted')
   AddTodo
 </template>
@@ -81,32 +46,43 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Todo } from '@/models/Todo'
 import { getTodos, editTodo } from '@/utils/api'
-import TodoText from '@/components/TodoText.vue'
-import DeleteTodo from '@/components/DeleteTodo.vue'
-import AddTodo from '@/components/AddTodo.vue'
+import TodoText from '@/components/TodoCard/TodoText.vue'
 import { Watch } from 'vue-property-decorator'
 import * as api from '@/utils/api'
-import { decrypt } from '@/utils/encryption'
-import { i18n } from '@/plugins/i18n'
+import { serverBus } from '@/main'
 import { playSound, Sounds } from '@/utils/sounds'
 import { namespace } from 'vuex-class'
 import { User } from '@/models/User'
-import { alertError } from '@/utils/alertError'
-import { serverBus } from '@/main'
+import { Tag } from '@/models/Tag'
+import ProgressBlock from '@/components/ProgressBlock.vue'
+import EmptyPlaceholder from '@/components/EmptyPlaceholder.vue'
+import AllDonePlaceholder from '@/components/AllDonePlaceholder.vue'
+import TodoCard from '@/components/TodoCard/TodoCard.vue'
+import AddTodo from '@/components/AddTodo.vue'
+import DeleteTodo from '@/components/DeleteTodo.vue'
 
 const UserStore = namespace('UserStore')
-const AppStore = namespace('AppStore')
+const SnackbarStore = namespace('SnackbarStore')
+const SettingsStore = namespace('SettingsStore')
+const TagsStore = namespace('TagsStore')
 
 @Component({
   components: {
     TodoText,
-    DeleteTodo,
+    ProgressBlock,
+    EmptyPlaceholder,
+    AllDonePlaceholder,
+    TodoCard,
     AddTodo,
+    DeleteTodo,
   },
 })
 export default class CurrentTodo extends Vue {
   @UserStore.State user?: User
-  @AppStore.State dark!: boolean
+  @SettingsStore.State hotKeysEnabled!: boolean
+  @SettingsStore.State startTimeOfDay?: string
+  @SnackbarStore.Mutation setSnackbarError!: (error: string) => void
+  @TagsStore.State searchTags!: Set<String>
 
   showCompleted = false
   todo: Todo | null = null
@@ -118,22 +94,10 @@ export default class CurrentTodo extends Vue {
   todoEdited: Partial<Todo> | null = null
   todoDeleted: Todo | null = null
 
-  get text() {
-    if (this.todo?.encrypted) {
-      return (
-        decrypt(this.todo?.text, true) || i18n.t('encryption.errorDecrypting')
-      )
-    } else {
-      return this.todo?.text
-    }
-  }
-
-  get errorDecrypting() {
-    if (this.todo?.encrypted) {
-      return !decrypt(this.todo?.text, true)
-    } else {
-      return false
-    }
+  get backgroundColor() {
+    return `background-color: ${
+      this.$vuetify.theme.dark ? '#121212 !important;' : '#ffffff !important'
+    }`
   }
 
   get progress() {
@@ -145,16 +109,22 @@ export default class CurrentTodo extends Vue {
         ).toFixed(0)
   }
 
-  beforeMount() {
+  mounted() {
     this.updateTodo()
   }
 
-  addTodo() {
-    serverBus.$emit('addTodoRequested', undefined, this.todo)
+  created() {
+    serverBus.$on('refreshRequested', () => {
+      this.updateTodo()
+    })
   }
 
   todoUpdating = false
+
   async updateTodo() {
+    if (this.todoUpdating) {
+      return
+    }
     const user = this.user
     if (!user) {
       return
@@ -166,13 +136,17 @@ export default class CurrentTodo extends Vue {
       this.incompleteTodosCount = fetched.incompleteTodosCount
       this.todosCount = fetched.todosCount
     } catch (err) {
-      alertError(err)
+      console.error(err)
+      this.setSnackbarError('errors.loadTodos')
     } finally {
       this.todoUpdating = false
     }
   }
 
-  async completeTodo() {
+  async completeTodo(hotkey = false) {
+    if (hotkey && !this.hotKeysEnabled) {
+      return
+    }
     const user = this.user
     if (!user) {
       return
@@ -189,8 +163,9 @@ export default class CurrentTodo extends Vue {
         await playSound(Sounds.taskDone)
       }
       this.updateTodo()
+      this.tryConfetti()
     } catch (err) {
-      alertError(err)
+      this.setSnackbarError(err.response ? err.response.data : err.message)
     } finally {
       this.loading = false
     }
@@ -198,6 +173,21 @@ export default class CurrentTodo extends Vue {
 
   async deleteTodo() {
     this.todoDeleted = this.todo ? { ...this.todo } : null
+  }
+
+  addTodo() {
+    serverBus.$emit('addTodoRequested', undefined, this.todo)
+  }
+
+  edit() {
+    const propsTodo = { ...this.todo } as Partial<Todo>
+    if (!propsTodo || !propsTodo.date) {
+      this.todoEdited = propsTodo
+      return
+    }
+    propsTodo.date = `${propsTodo.monthAndYear}-${propsTodo.date}`
+    propsTodo.monthAndYear = undefined
+    this.todoEdited = propsTodo
   }
 
   async skipTodo() {
@@ -213,10 +203,29 @@ export default class CurrentTodo extends Vue {
       await api.skipTodo(user, this.todo)
       this.updateTodo()
     } catch (err) {
-      alertError(err)
+      this.setSnackbarError(err.response ? err.response.data : err.message)
     } finally {
       this.loading = false
     }
+  }
+
+  animating = false
+  tryConfetti() {
+    const random = Math.floor(Math.random() * 5)
+    if (this.animating || random !== 0) {
+      return
+    }
+    this.animating = true
+    ;(this as any).$confetti.start({
+      particlesPerFrame: 0.85,
+      defaultType: 'heart',
+    })
+    setTimeout(() => {
+      ;(this as any).$confetti.stop()
+    }, 3000)
+    setTimeout(() => {
+      this.animating = false
+    }, 15000)
   }
 
   cleanTodo(needsReload = true) {
@@ -231,3 +240,9 @@ export default class CurrentTodo extends Vue {
   }
 }
 </script>
+
+<style>
+.current-todo-content {
+  background-color: black !important;
+}
+</style>

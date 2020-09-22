@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.px-4
   v-textarea(
     clearable,
     :label='$t("todo.create.text")',
@@ -17,6 +17,15 @@ div
     @blur='focused = false',
     :disabled='todo && todo.encrypted && (errorDecrypting(todo) || !$store.state.UserStore.password)'
   )
+  .mb-4(v-if='filteredTags.length')
+    v-btn(
+      text,
+      small,
+      v-for='(tag, i) in filteredTags',
+      :key='i',
+      :color='colorForTag(tag)',
+      @click='tagSelected(tag)'
+    ) {{ "#" }}{{ tag.tag }}
   v-row(no-gutters)
     v-col(cols='12', md='6')
       v-menu(v-model='dateMenu', min-width=0)
@@ -63,7 +72,7 @@ div
           v-text-field(
             clearable,
             readonly,
-            :label='$t("todo.create.time")',
+            :label='$t("addTodoTime")',
             prepend-icon='access_time',
             v-on='on',
             v-model='todo.time'
@@ -82,7 +91,7 @@ div
     v-col(cols='12', md='6')
       v-switch(:label='$t("todo.create.frog")', v-model='todo.frog')
     v-col(cols='12', md='6')
-      v-switch(:label='$t("todo.create.completed")', v-model='todo.completed')
+      v-switch(:label='$t("completed")', v-model='todo.completed')
     v-col(v-if='!editTodo && (moreShown || todo.time)', cols='12', md='6')
       v-switch(:label='$t("todo.create.goFirst")', v-model='todo.goFirst')
   v-row.v-flex-row
@@ -111,6 +120,8 @@ import { User } from '@/models/User'
 
 const AppStore = namespace('AppStore')
 const TagsStore = namespace('TagsStore')
+const SettingsStore = namespace('SettingsStore')
+const DelegationStore = namespace('DelegationStore')
 
 @Component
 export default class TodoForm extends Vue {
@@ -123,6 +134,9 @@ export default class TodoForm extends Vue {
   @AppStore.State language?: string
   @AppStore.State dark!: boolean
   @TagsStore.State tags!: Tag[]
+  @SettingsStore.State firstDayOfWeek?: number
+  @SettingsStore.State startTimeOfDay?: string
+  @DelegationStore.State delegates!: User[]
 
   dateMenu = false
   monthMenu = false
@@ -181,6 +195,13 @@ export default class TodoForm extends Vue {
     this.todo.monthAndYear = newMonthAndYear
   }
 
+  get delegatesItems() {
+    return this.delegates.map(d => ({
+      value: d._id,
+      text: d.name,
+    }))
+  }
+
   errorDecrypting(todo: Todo) {
     if (todo.encrypted) {
       return !decrypt(todo.text, true)
@@ -191,7 +212,13 @@ export default class TodoForm extends Vue {
 
   get filteredTags() {
     const emptyMatches = this.todo.text.match(/#$/g) || []
+    if (emptyMatches.length) {
+      return this.tags
+    }
     const matches = this.todo.text.match(/#[\u0400-\u04FFa-zA-Z_0-9]+$/g) || []
+    if (!matches.length) {
+      return []
+    }
     const match = matches[0]
     return this.tags
       .filter(tag => tag.tag.includes(match.substr(1)))
@@ -213,7 +240,7 @@ export default class TodoForm extends Vue {
   ]
 
   get safeFirstDayOfWeek() {
-    const storeFirstDayOfWeek = undefined
+    const storeFirstDayOfWeek = this.firstDayOfWeek
     return storeFirstDayOfWeek === undefined
       ? this.language === 'en'
         ? 0
@@ -226,7 +253,7 @@ export default class TodoForm extends Vue {
   }
 
   get todayFormattedForExactDate() {
-    const storeStartTimeOfDay = '00:00'
+    const storeStartTimeOfDay = this.startTimeOfDay || '00:00'
     const date = new Date()
     const newDay = new Date()
     newDay.setHours(parseInt(storeStartTimeOfDay.substr(0, 2)))
@@ -269,6 +296,25 @@ export default class TodoForm extends Vue {
 
   colorForTag(tag: Tag) {
     return tag.color || (this.dark ? '#64B5F6' : '#1E88E5')
+  }
+
+  tagSelected(tag: Tag) {
+    const emptyMatches = this.todo.text.match(/#$/g) || []
+    if (emptyMatches.length) {
+      this.todo.text = `${this.todo.text}${tag.tag} `
+      ;(this.$refs.textInput as any).focus()
+      return
+    }
+    const matches = this.todo.text.match(/#[\u0400-\u04FFa-zA-Z_0-9]+$/g) || []
+    if (!matches.length) {
+      return
+    }
+    const match = matches[0]
+    this.todo.text = `${this.todo.text.substr(
+      0,
+      this.todo.text.length - match.length
+    )}#${tag.tag} `
+    ;(this.$refs.textInput as any).focus()
   }
 }
 </script>
