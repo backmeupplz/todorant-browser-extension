@@ -732,6 +732,8 @@ export const messages = {
       text:
         '🥳 You did it! All the tasks for today are done, go get rest or maybe dance a little 💃',
     },
+    addTodoTime: 'Exact time',
+    completed: 'Completed',
     empty: {
       action: 'To infinity!',
       text:

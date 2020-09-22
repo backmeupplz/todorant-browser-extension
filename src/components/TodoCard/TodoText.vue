@@ -1,10 +1,8 @@
 <template lang="pug">
-.flex-grow-1(style='max-width: 100%;')
+.flex-grow-1.text-container(style='max-width: 100%;')
   p(v-if='todo.delegator')
     span {{ todo.delegator.name }}
     span(v-if='delegateScreen') : {{ todo.monthAndYear }}{{ todo.date ? `-${todo.date}` : "" }}
-  span(v-if='debug') ({{ todo.order }})
-  span(v-if='debug') ({{ todo.frogFails }})
   span(v-if='!!todo.frog') 🐸{{ " " }}
   span(v-if='!!todo.time') {{ todo.time }}{{ " " }}
   span(
@@ -20,6 +18,7 @@
     ) {{ element.value }}
     a(
       v-else,
+      @click.prevent='hash(element.url)',
       :style='{ color: colorForTag(element.value.substr(1)) }'
     ) {{ element.value }}
 </template>
@@ -28,6 +27,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { l } from '@/utils/linkify'
+import { serverBus } from '@/main'
 import { Prop } from 'vue-property-decorator'
 import { Todo } from '@/models/Todo'
 import { namespace } from 'vuex-class'
@@ -41,8 +41,9 @@ export default class TodoText extends Vue {
   @Prop({ required: true }) todo!: Todo
   @Prop({ required: true }) text!: string
   @Prop({ required: true }) errorDecrypting!: boolean
+  @Prop() delegateScreen?: boolean
 
-  @AppStore.State dark?: boolean
+  @AppStore.State dark!: boolean
   @TagsStore.State tagColors!: TagColors
 
   colorForTag(tag: string) {
@@ -54,8 +55,12 @@ export default class TodoText extends Vue {
     return l(this.text)
   }
 
-  get debug() {
-    return !!process.env.VUE_APP_DEV
+  hash(hash: string) {
+    if (!location.hash.includes(hash)) {
+      let hashesString = location.hash == '' ? hash : `,${hash}`
+      location.hash += hashesString
+    }
+    serverBus.$emit('refreshRequested')
   }
 }
 </script>
@@ -63,5 +68,14 @@ export default class TodoText extends Vue {
 <style scoped>
 span {
   white-space: pre-wrap;
+}
+.text-container {
+  font-family: Montserrat;
+  white-space: pre-wrap;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: -0.24px;
 }
 </style>

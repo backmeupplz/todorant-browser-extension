@@ -94,12 +94,16 @@ import draggable from 'vuedraggable'
 import { alertError } from '@/utils/alertError'
 
 const UserStore = namespace('UserStore')
+const SettingsStore = namespace('SettingsStore')
 
 @Component({
   components: { TodoForm, draggable },
 })
 export default class AddTodo extends Vue {
   @Prop({ required: true }) currentTab!: number
+
+  @SettingsStore.State showTodayOnAddTodo?: boolean
+  @SettingsStore.State newTodosGoFirst?: boolean
 
   @UserStore.State subscriptionStatus!: SubscriptionStatus
   @UserStore.State user?: User
@@ -175,12 +179,20 @@ export default class AddTodo extends Vue {
     if (this.date) {
       this.todos.push({
         date: this.date,
-        goFirst: false,
+        goFirst: this.newTodosGoFirst || false,
+        text: hashtags.join(' '),
+      })
+    } else if (this.showTodayOnAddTodo) {
+      const now = new Date()
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset())
+      this.todos.push({
+        date: now.toISOString().substr(0, 10),
+        goFirst: this.newTodosGoFirst || false,
         text: hashtags.join(' '),
       })
     } else {
       this.todos.push({
-        goFirst: false,
+        goFirst: this.newTodosGoFirst || false,
         text: hashtags.join(' '),
       })
     }
