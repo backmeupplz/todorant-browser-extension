@@ -26,7 +26,7 @@
       :color='colorForTag(tag)',
       @click='tagSelected(tag)'
     ) {{ "#" }}{{ tag.tag }}
-  v-row(no-gutters)
+  v-row.mt-4(no-gutters)
     v-col(cols='12', md='6')
       v-menu(v-model='dateMenu', min-width=0)
         template(v-slot:activator='{ on }')

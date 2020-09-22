@@ -102,8 +102,10 @@ const SettingsStore = namespace('SettingsStore')
 export default class AddTodo extends Vue {
   @Prop({ required: true }) currentTab!: number
 
-  @SettingsStore.State showTodayOnAddTodo?: boolean
+  @SettingsStore.State hotKeysEnabled!: boolean
+  @SettingsStore.State duplicateTagInBreakdown?: boolean
   @SettingsStore.State newTodosGoFirst?: boolean
+  @SettingsStore.State showTodayOnAddTodo?: boolean
 
   @UserStore.State subscriptionStatus!: SubscriptionStatus
   @UserStore.State user?: User
@@ -175,6 +177,13 @@ export default class AddTodo extends Vue {
         text = decrypt(this.todoToBreakdown.text, true) || ''
       }
       const matches = linkify.match(text) || []
+      if (this.duplicateTagInBreakdown) {
+        hashtags = matches
+          .map(v =>
+            /^#[\u0400-\u04FFa-zA-Z_0-9]+$/u.test(v.url) ? v.url : undefined
+          )
+          .filter(v => !!v) as string[]
+      }
     }
     if (this.date) {
       this.todos.push({
