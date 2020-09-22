@@ -59,6 +59,7 @@ import EmptyPlaceholder from '@/components/EmptyPlaceholder.vue'
 import AllDonePlaceholder from '@/components/AllDonePlaceholder.vue'
 import TodoCard from '@/components/TodoCard/TodoCard.vue'
 import AddTodo from '@/components/AddTodo.vue'
+import DeleteTodo from '@/components/DeleteTodo.vue'
 
 const UserStore = namespace('UserStore')
 const SnackbarStore = namespace('SnackbarStore')
@@ -73,6 +74,7 @@ const TagsStore = namespace('TagsStore')
     AllDonePlaceholder,
     TodoCard,
     AddTodo,
+    DeleteTodo,
   },
 })
 export default class CurrentTodo extends Vue {
