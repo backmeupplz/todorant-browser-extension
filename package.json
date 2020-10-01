@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && cp manifest.json dist/",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "upload-translations": "node scripts/upload.js",
+    "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./src/assets/localization.ts"
   },
   "dependencies": {
     "@types/chrome": "^0.0.122",
@@ -37,6 +39,7 @@
     "@vue/cli-plugin-typescript": "~4.4.0",
     "@vue/cli-plugin-vuex": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
+    "flat": "^5.0.2",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "sass": "^1.19.0",

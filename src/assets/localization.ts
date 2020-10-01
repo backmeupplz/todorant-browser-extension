@@ -160,6 +160,7 @@ export const messages = {
         facebook: 'Could not log in with Facebook',
         google: 'Could not log in with Google',
         telegram: 'Could not log in with Telegram',
+        apple: 'Could not log in with Apple',
       },
       internal: 'Internal server error',
       loadTodos: 'Could not fetch todos',
@@ -256,6 +257,7 @@ export const messages = {
       hotkeys: 'Hotkeys',
       startTimeOfDay: 'Start of the day',
       username: 'Name',
+      telegram: 'Telegram',
     },
     allDoneTitle: 'Congratulations!',
     allDoneText:
@@ -442,6 +444,8 @@ export const messages = {
       intoEpic: 'Make an Epic',
       epicGoal: 'Epic goal',
     },
+    success: 'Success!',
+    notLogginedBody: 'Please, login at ',
   },
   ru: {
     encryption: {
@@ -592,6 +596,7 @@ export const messages = {
         facebook: 'Не получилось зайти через Фейсбук',
         google: 'Не получилось зайти через Гугл',
         telegram: 'Не получилось зайти через Телеграм',
+        apple: 'Не получилось зайти через Эпл',
       },
       internal: 'Внутренняя ошибка сервера',
       loadTodos: 'Не получилось загрузить задачи',
@@ -690,6 +695,7 @@ export const messages = {
       hotkeys: 'Горячие клавиши',
       startTimeOfDay: 'Начало дня',
       username: 'Имя',
+      telegram: 'Телеграм',
     },
     allDoneTitle: 'Поздравляем!',
     allDoneText:
@@ -880,6 +886,8 @@ export const messages = {
       intoEpic: 'Сделать эпиком',
       epicGoal: 'Цель эпика',
     },
+    success: 'Успех!',
+    notLogginedBody: 'Пожалуйста, войдите в аккаунт на ',
   },
   ua: {
     encryption: {
@@ -1033,6 +1041,7 @@ export const messages = {
         facebook: 'Не вдалося зайти через Facebook',
         google: 'Не вдалося зайти через Google',
         telegram: 'Не вдалося зайти через Telegram',
+        apple: 'Не вдалося зайти через Apple',
       },
       internal: 'Внутрішня помилка серверу',
       loadTodos: 'Не вдалося завантажити задачі',
@@ -1121,6 +1130,7 @@ export const messages = {
       disconnectConfirm: 'Впевнені, що хочете відключити цей сервіс?',
       account: 'Обліковий запис',
       startTimeOfDay: 'Початок дня',
+      telegram: 'Телеграм',
     },
     allDoneTitle: 'Вітаємо!',
     allDoneText:
@@ -1516,6 +1526,7 @@ export const messages = {
         facebook: 'Não foi possível conectar com Facebook',
         google: 'Não foi possível conectar com Google',
         telegram: 'Não foi possível conectar com Telegram',
+        apple: 'Não foi possível conectar com Apple',
       },
       internal: 'Erro do Servidor Interno',
       loadTodos: 'Não foi possível buscar as tarefas',
@@ -1707,6 +1718,12 @@ export const messages = {
     },
     googleCalendarDisableSuccess: 'Google Agenda desativado',
     googleCalendarEnableSuccess: 'Google Agenda ativado',
+    delegate: {
+      title: 'Atribuição',
+      noDelegators:
+        'Você ainda não tem atribuições. Compartilhe o link acima com as pessoas que você deseja designar atribuições.',
+      pickDelegateField: 'Atribuir',
+    },
   },
   de: {
     search: 'Suche',
@@ -1843,6 +1860,7 @@ export const messages = {
         facebook: 'No se pudo iniciar sesión con Facebook',
         google: 'No se pudo iniciar sesión con Google',
         telegram: 'No se pudo iniciar sesión con Telegram',
+        apple: 'No se pudo iniciar sesión con Apple',
       },
       internal: 'Error interno del servidor',
       loadTodos: 'No se pudo extraer las tareas',
