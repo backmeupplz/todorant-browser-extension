@@ -27,11 +27,12 @@ v-container(
           :incompleteTodosCount='incompleteTodosCount'
         )
       AllDonePlaceholder(
-        v-if='!todo && !loading && !todoUpdating && todosCount > 0'
+        v-if='!todo && !loading && !todoUpdating && todosCount > 0 && !loadingError'
       )
       EmptyPlaceholder(
-        v-if='!todo && !loading && !todoUpdating && todosCount === 0'
+        v-if='!todo && !loading && !todoUpdating && todosCount === 0 && !loadingError'
       )
+      CannotLoadPlaceholder(v-if='loadingError')
   EditTodo(
     :todo='todoEdited',
     :cleanTodo='cleanTodo',
@@ -57,6 +58,7 @@ import { Tag } from '@/models/Tag'
 import ProgressBlock from '@/components/ProgressBlock.vue'
 import EmptyPlaceholder from '@/components/EmptyPlaceholder.vue'
 import AllDonePlaceholder from '@/components/AllDonePlaceholder.vue'
+import CannotLoadPlaceholder from '@/components/CannotLoadPlaceholder.vue'
 import TodoCard from '@/components/TodoCard/TodoCard.vue'
 import AddTodo from '@/components/AddTodo.vue'
 import DeleteTodo from '@/components/DeleteTodo.vue'
@@ -72,6 +74,7 @@ const TagsStore = namespace('TagsStore')
     ProgressBlock,
     EmptyPlaceholder,
     AllDonePlaceholder,
+    CannotLoadPlaceholder,
     TodoCard,
     AddTodo,
     DeleteTodo,
@@ -93,6 +96,8 @@ export default class CurrentTodo extends Vue {
 
   todoEdited: Partial<Todo> | null = null
   todoDeleted: Todo | null = null
+
+  loadingError = false
 
   get backgroundColor() {
     return `background-color: ${
@@ -135,9 +140,11 @@ export default class CurrentTodo extends Vue {
       this.todo = fetched.todo || null
       this.incompleteTodosCount = fetched.incompleteTodosCount
       this.todosCount = fetched.todosCount
+      this.loadingError = false
     } catch (err) {
       console.error(err)
       this.setSnackbarError('errors.loadTodos')
+      this.loadingError = true
     } finally {
       this.todoUpdating = false
     }
