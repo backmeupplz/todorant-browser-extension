@@ -145,6 +145,9 @@ export const messages = {
       },
       act: 'Act!',
       apple: 'Login with Apple',
+      crossplatform: {
+        title: 'Truly cross-platform',
+      },
     },
     menu: {
       darkMode: {
@@ -258,6 +261,7 @@ export const messages = {
       startTimeOfDay: 'Start of the day',
       username: 'Name',
       telegram: 'Telegram',
+      swipeActions: 'Swipe actions',
     },
     allDoneTitle: 'Congratulations!',
     allDoneText:
@@ -581,6 +585,9 @@ export const messages = {
       },
       act: 'Действуйте!',
       apple: 'Войти через Эппл',
+      crossplatform: {
+        title: 'По-настоящему кросс-платформенный',
+      },
     },
     menu: {
       darkMode: {
@@ -696,6 +703,7 @@ export const messages = {
       startTimeOfDay: 'Начало дня',
       username: 'Имя',
       telegram: 'Телеграм',
+      swipeActions: 'Действия свайпами',
     },
     allDoneTitle: 'Поздравляем!',
     allDoneText:
@@ -1026,6 +1034,9 @@ export const messages = {
       },
       act: 'Дійте!',
       apple: 'Увійти через Apple',
+      crossplatform: {
+        title: 'По-справжньому крос-платформний',
+      },
     },
     menu: {
       darkMode: {
