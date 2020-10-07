@@ -27,12 +27,12 @@ v-container(
           :incompleteTodosCount='incompleteTodosCount'
         )
       AllDonePlaceholder(
-        v-if='!todo && !loading && !todoUpdating && todosCount > 0 && !loadingError'
+        v-if='!todo && !loading && !todoUpdating && todosCount > 0 && !loadingError && !aborted'
       )
       EmptyPlaceholder(
-        v-if='!todo && !loading && !todoUpdating && todosCount === 0 && !loadingError'
+        v-if='!todo && !loading && !todoUpdating && todosCount === 0 && !loadingError && !aborted'
       )
-      CannotLoadPlaceholder(v-if='loadingError')
+      CannotLoadPlaceholder(v-if='loadingError && !aborted')
   EditTodo(
     :todo='todoEdited',
     :cleanTodo='cleanTodo',
@@ -98,6 +98,7 @@ export default class CurrentTodo extends Vue {
   todoDeleted: Todo | null = null
 
   loadingError = false
+  aborted = false
 
   get backgroundColor() {
     return `background-color: ${
@@ -141,7 +142,12 @@ export default class CurrentTodo extends Vue {
       this.incompleteTodosCount = fetched.incompleteTodosCount
       this.todosCount = fetched.todosCount
       this.loadingError = false
+      this.aborted = false
     } catch (err) {
+      if (err.message.includes('aborted')) {
+        this.aborted = true
+        return
+      }
       console.error(err)
       this.setSnackbarError('errors.loadTodos')
       this.loadingError = true
