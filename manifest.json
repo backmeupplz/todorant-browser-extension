@@ -8,7 +8,15 @@
     "48": "img/Icon-48.png",
     "128": "img/Icon-128.png"
   },
-  "permissions": ["storage", "cookies", "https://todorant.com/"],
+  "permissions": [
+    "storage",
+    "cookies",
+    "https://todorant.com/",
+    "contextMenus"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
