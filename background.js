@@ -7,7 +7,7 @@ if (typeof chrome !== undefined) {
 function runBackgroundScript(browser) {
   try {
     browser.contextMenus.create({
-      title: 'Open in todorant',
+      title: 'Open in Todorant',
       id: 'todorant-context',
       contexts: ['link', 'selection', 'editable', 'page_action'],
     })
