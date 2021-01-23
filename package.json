@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && cp manifest.json dist/",
+    "build": "vue-cli-service build && cp manifest.json dist/ && cp background.js dist/",
     "lint": "vue-cli-service lint",
     "upload-translations": "node scripts/upload.js",
     "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./src/assets/localization.ts"

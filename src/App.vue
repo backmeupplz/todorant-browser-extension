@@ -53,7 +53,6 @@ export default class App extends Vue {
 
 * {
   font-family: Montserrat;
-  white-space: pre-wrap;
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
