@@ -10,7 +10,8 @@
     "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./src/assets/localization.ts",
     "increment-version": "versiony package.json --patch && versiony manifest.json --patch && git add . && git commit -m 'new version' && git push",
     "release-chrome": "node scripts/release-chrome.js",
-    "build-and-publish": "yarn increment-version && yarn build && yarn release-chrome"
+    "release-firefox": "node scripts/release-firefox.js",
+    "build-and-publish": "yarn increment-version && yarn build && yarn release-chrome && yarn release-firefox"
   },
   "dependencies": {
     "@types/chrome": "^0.0.122",
