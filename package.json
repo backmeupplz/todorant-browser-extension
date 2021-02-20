@@ -7,7 +7,8 @@
     "build": "vue-cli-service build && cp manifest.json dist/ && cp background.js dist/",
     "lint": "vue-cli-service lint",
     "upload-translations": "node scripts/upload.js",
-    "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./src/assets/localization.ts"
+    "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./src/assets/localization.ts",
+    "increment-version": "versiony package.json --patch && versiony manifest.json --patch"
   },
   "dependencies": {
     "@types/chrome": "^0.0.122",
@@ -39,12 +40,14 @@
     "@vue/cli-plugin-typescript": "~4.4.0",
     "@vue/cli-plugin-vuex": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
+    "chrome-webstore-upload": "^0.4.4",
     "flat": "^5.0.2",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
     "typescript": "~3.9.3",
+    "versiony": "^2.0.1",
     "vue-cli-plugin-vuetify": "~2.0.7",
     "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.3.0"
