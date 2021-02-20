@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint",
     "upload-translations": "node scripts/upload.js",
     "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./src/assets/localization.ts",
-    "increment-version": "versiony package.json --patch && versiony manifest.json --patch",
+    "increment-version": "versiony package.json --patch && versiony manifest.json --patch && git add . && git commit -m 'new version' && git push",
     "release-chrome": "node scripts/release-chrome.js",
     "build-and-publish": "yarn increment-version && yarn build && yarn release-chrome"
   },
