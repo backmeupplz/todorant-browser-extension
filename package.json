@@ -1,78 +1,33 @@
 {
-  "name": "todorant-extension",
-  "version": "1.5.6",
-  "private": true,
+  "name": "extension-builder",
+  "version": "1.0.0",
+  "description": "Extension builder",
+  "main": "dist/app.js",
+  "repository": "https://github.com/backmeupplz/backend-starter",
+  "author": "backmeupplz <backmeupplz@gmail.com>",
+  "license": "MIT",
+  "private": false,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && cp manifest.json dist/ && cp background.js dist/",
-    "lint": "vue-cli-service lint",
-    "upload-translations": "node scripts/upload.js",
-    "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./src/assets/localization.ts",
-    "increment-version": "versiony package.json --patch && versiony manifest.json --patch && git add . && git commit -m 'new version' && git push",
-    "release-chrome": "node scripts/release-chrome.js",
-    "release-firefox": "node scripts/release-firefox.js",
-    "build-and-publish": "yarn increment-version && yarn build && yarn release-chrome && yarn release-firefox"
-  },
-  "dependencies": {
-    "@types/chrome": "^0.0.122",
-    "@types/crypto-js": "^3.1.47",
-    "@types/js-cookie": "^2.2.6",
-    "@types/linkify-it": "^2.1.0",
-    "axios": "^0.19.2",
-    "crypto-js": "^4.0.0",
-    "js-cookie": "^2.2.1",
-    "linkify-it": "^3.0.2",
-    "material-design-icons-iconfont": "^5.0.1",
-    "moment": "^2.27.0",
-    "pug": "^3.0.0",
-    "pug-plain-loader": "^1.0.0",
-    "tlds": "^1.208.0",
-    "vue": "^2.6.11",
-    "vue-class-component": "^7.2.5",
-    "vue-i18n": "^8.20.0",
-    "vue-property-decorator": "^8.4.2",
-    "vuedraggable": "^2.24.1",
-    "vuetify": "^2.2.11",
-    "vuex": "^3.4.0",
-    "vuex-class": "^0.3.2",
-    "vuex-module-decorators": "^0.17.0",
-    "vuex-persistedstate": "^3.1.0",
-    "webextension-polyfill-ts": "^0.19.0"
+    "develop": "concurrently -i -k -p \"[{name}]\" -n \"Node,TypeScript\" -c \"yellow.bold,cyan.bold\" \"yarn watch-js\" \"yarn watch-ts\"",
+    "build-ts": "tsc --skipLibCheck",
+    "watch-ts": "tsc -w --skipLibCheck",
+    "watch-js": "nodemon dist/app.js",
+    "build-extension": "yarn build-ts && yarn node dist/app",
+    "build-and-publish": "yarn build-ts publish && node dist/app publish"
   },
   "devDependencies": {
-    "@vue/cli-plugin-typescript": "~4.4.0",
-    "@vue/cli-plugin-vuex": "~4.4.0",
-    "@vue/cli-service": "~4.4.0",
-    "chrome-webstore-upload": "^0.4.4",
-    "flat": "^5.0.2",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1",
-    "sass": "^1.19.0",
-    "sass-loader": "^8.0.0",
-    "typescript": "~3.9.3",
-    "versiony": "^2.0.1",
-    "vue-cli-plugin-vuetify": "~2.0.7",
-    "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.3.0",
-    "zip-a-folder": "^0.0.12"
+    "@typegoose/typegoose": "^7.6.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^15.6.1",
+    "concurrently": "^6.0.0",
+    "nodemon": "^2.0.7"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  },
-  "prettier": {
-    "pluginSearchDirs": [
-      "."
-    ],
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5"
+  "dependencies": {
+    "del": "^6.0.0",
+    "dotenv": "^10.0.0",
+    "fs-extra": "^10.0.0",
+    "ncp": "^2.0.0",
+    "ora": "^5.4.0",
+    "typescript": "^4.2.3"
   }
 }
