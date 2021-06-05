@@ -34,7 +34,7 @@ interface Path {
 }
 
 async function main() {
-  const publish = process.argv[2] === 'publish'
+  const publish = process.env.publish === 'true'
   const spinner = ora(
     `${publish ? 'Building and publishing...' : 'Building'}`
   ).start()

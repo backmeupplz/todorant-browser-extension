@@ -13,7 +13,7 @@
     "watch-ts": "tsc -w --skipLibCheck",
     "watch-js": "nodemon dist/app.js",
     "build-extension": "yarn build-ts && yarn node dist/app",
-    "build-and-publish": "yarn build-ts publish && node dist/app publish"
+    "build-and-publish": "publish=true yarn build-ts && publish=true node dist/app"
   },
   "devDependencies": {
     "@typegoose/typegoose": "^7.6.0",
