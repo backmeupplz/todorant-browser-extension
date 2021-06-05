@@ -44,6 +44,22 @@ export default class App extends Vue {
 </script>
 
 <style>
+.container,
+.background-colored,
+.v-list,
+.v-expansion-panel {
+  background-color: #ffffff !important;
+}
+.theme--dark .container,
+.theme--dark .background-colored,
+.theme--dark .v-list,
+.theme--dark .v-expansion-panel {
+  background-color: #121212 !important;
+}
+* {
+  font-family: Montserrat;
+}
+
 .image {
   max-width: 240px;
 }
