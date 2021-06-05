@@ -13,14 +13,17 @@
     "watch-ts": "tsc -w --skipLibCheck",
     "watch-js": "nodemon dist/app.js",
     "build-extension": "yarn build-ts && yarn node dist/app",
-    "build-and-publish": "publish=true yarn build-ts && publish=true node dist/app"
+    "build-and-publish": "yarn increment-version && publish=true yarn build-ts && publish=true node dist/app",
+    "increment-version": "yarn versiony extension-base/package.json --patch && yarn versiony extension-base/manifest.json --patch && git add . && git commit -m 'new version' && git push"
   },
   "devDependencies": {
     "@typegoose/typegoose": "^7.6.0",
     "@types/dotenv": "^8.2.0",
     "@types/node": "^15.6.1",
     "concurrently": "^6.0.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "versiony": "^2.0.1",
+    "versiony-cli": "^1.3.0"
   },
   "dependencies": {
     "del": "^6.0.0",

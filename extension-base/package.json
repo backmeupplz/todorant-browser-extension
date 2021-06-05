@@ -1,6 +1,6 @@
 {
   "name": "todorant-extension",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,17 +8,16 @@
     "lint": "vue-cli-service lint",
     "upload-translations": "node scripts/upload.js",
     "download-translations": "node scripts/download.js && yarn prettier --single-quote --no-semi --write ./src/assets/localization.ts",
-    "increment-version": "versiony package.json --patch && versiony manifest.json --patch && git add . && git commit -m 'new version' && git push",
     "release-chrome": "node scripts/release-chrome.js",
     "release-firefox": "node scripts/release-firefox.js",
-    "build-and-publish": "yarn increment-version && yarn build && yarn release-chrome && yarn release-firefox"
+    "build-and-publish": "yarn build && yarn release-chrome && yarn release-firefox"
   },
   "dependencies": {
     "@types/chrome": "^0.0.122",
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.27.0",
     "vuex-class": "^0.3.2",
-    "vuex-module-decorators": "^0.17.0",
+    "vuex-module-decorators": "^1.0.1",
     "webextension-polyfill-ts": "^0.19.0",
     "@justinribeiro/lite-youtube": "^0.9.1",
     "@types/chart.js": "^2.9.27",
@@ -91,7 +90,6 @@
     "versiony-cli": "^1.3.0",
     "vue-template-compiler": "^2.6.12",
     "vuex-class": "^0.3.2",
-    "vuex-module-decorators": "^1.0.1",
     "webpack-bundle-analyzer": "^3.9.0"
   },
   "browserslist": [
