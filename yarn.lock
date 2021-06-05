@@ -142,6 +142,11 @@ anymatch@~3.1.1:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+arguably@*:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/arguably/-/arguably-0.1.6.tgz#1eba4689f1f7de08a277b455f2a1f250e8f2d3ed"
+  integrity sha1-HrpGifH33giid7RV8qHyUOjy0+0=
+
 array-union@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/array-union/-/array-union-2.1.0.tgz#b798420adbeb1de828d84acd8a2e23d3efe85e8d"
@@ -1472,6 +1477,19 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+versiony-cli@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/versiony-cli/-/versiony-cli-1.3.0.tgz#9e30d633d3ad6f434889b41113cf446a960caf75"
+  integrity sha1-njDWM9Otb0NIibQRE89EapYMr3U=
+  dependencies:
+    arguably "*"
+    versiony "*"
+
+versiony@*, versiony@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/versiony/-/versiony-2.0.1.tgz#ef425067169a91648426bb4447a5d94fdd7654e0"
+  integrity sha1-70JQZxaakWSEJrtER6XZT912VOA=
 
 wcwidth@^1.0.1:
   version "1.0.1"
