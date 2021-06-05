@@ -9,7 +9,7 @@ export async function setTheme() {
   if (!cookie) {
     return
   }
-  //Parse string to boolean
-  const theme = cookie.value === 'true' ? true : false
+  // Parse string to boolean
+  const theme = cookie.value === 'true'
   getModule(AppStore, store).setDark(theme)
 }

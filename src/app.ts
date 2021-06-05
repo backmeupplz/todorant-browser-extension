@@ -46,7 +46,7 @@ async function main() {
   // Execute loop while imports are changing
   let sizeOfScannedImports = imports.size
   while (true) {
-    iDontKnowHowToCallFunction()
+    parseAndCopyFiles()
     if (sizeOfScannedImports === imports.size) {
       break
     }
@@ -134,11 +134,7 @@ function getPath(importLine: string) {
   } else if (withoutFrom) {
     importLine = importLine.split('import ')[1].split("'")[1]
   } else {
-    importLine = importLine
-      .split('from')[1]
-      .split("'")
-      .join('')
-      .substring(1)
+    importLine = importLine.split('from')[1].split("'").join('').substring(1)
   }
   return {
     importPath: importLine,
@@ -170,7 +166,7 @@ function extractImports() {
   }
 }
 
-function iDontKnowHowToCallFunction() {
+function parseAndCopyFiles() {
   extractFilesAndDirs()
   extractImports()
   // Here we're getting our paths of imports
