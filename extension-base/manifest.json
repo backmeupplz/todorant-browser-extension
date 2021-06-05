@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Todorant",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "Use cognitive psychology to trick your brain into getting things done with the only To Do manager you will ever need.",
   "icons": {
     "16": "img/Icon-16.png",
