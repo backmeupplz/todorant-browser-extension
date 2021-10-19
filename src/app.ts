@@ -35,38 +35,44 @@ interface Path {
 
 async function main() {
   const publish = process.env.publish === 'true'
+
   const spinner = ora(
     `${publish ? 'Building and publishing...' : 'Building'}`
   ).start()
-  // Create dir for our extension
-  await createDir()
-  // Copy base of our extension
-  await copyBase()
+  try {
+    // Create dir for our extension
+    await createDir()
+    // Copy base of our extension
+    await copyBase()
 
-  // Execute loop while imports are changing
-  let sizeOfScannedImports = imports.size
-  while (true) {
-    parseAndCopyFiles()
-    if (sizeOfScannedImports === imports.size) {
-      break
+    // Execute loop while imports are changing
+    let sizeOfScannedImports = imports.size
+    while (true) {
+      parseAndCopyFiles()
+      if (sizeOfScannedImports === imports.size) {
+        break
+      }
+      sizeOfScannedImports = imports.size
     }
-    sizeOfScannedImports = imports.size
+    // Rewrite overlaped files that was added from frontend
+    await copyBase()
+    removeBrokenFiles()
+    // Copy env file to extension directory
+    await promiseExec('cp .env extension/')
+    // Copy styles for todo form *Hardcoded
+    await promiseExec(
+      `cp ${frontendSrcPath}/components/TodoForm/TodoForm.scss extension/src/components/TodoForm/`
+    )
+    // Download all packages and build our app
+    // We're building our app here, instead of direct yarn script due problems with yarn/npm
+    await promiseExec(
+      `cd extension && yarn && yarn ${publish ? 'build-and-publish' : 'build'}`
+    )
+  } catch (err) {
+    console.error(err)
+  } finally {
+    spinner.stop()
   }
-  // Rewrite overlaped files that was added from frontend
-  await copyBase()
-  removeBrokenFiles()
-  // Copy env file to extension directory
-  await promiseExec('cp .env extension/')
-  // Copy styles for todo form *Hardcoded
-  await promiseExec(
-    `cp ${frontendSrcPath}/components/TodoForm/TodoForm.scss extension/src/components/TodoForm/`
-  )
-  // Download all packages and build our app
-  // We're building our app here, instead of direct yarn script due problems with yarn/npm
-  await promiseExec(
-    `cd extension && yarn && yarn ${publish ? 'build-and-publish' : 'build'}`
-  )
-  spinner.stop()
 }
 
 main()

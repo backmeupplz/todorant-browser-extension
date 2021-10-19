@@ -15,6 +15,8 @@ import NotLoggined from '@/components/NotLoggined.vue'
 import AddTodo from '@/views/AddTodo.vue'
 import { User } from '@/models/User'
 import { login } from '@/utils/login'
+import { getDateString, getTodayWithStartOfDay } from '@/utils/time'
+import { serverBus } from '@/main'
 
 const UserStore = namespace('UserStore')
 const AppStore = namespace('AppStore')
@@ -23,9 +25,19 @@ const AppStore = namespace('AppStore')
 export default class App extends Vue {
   @UserStore.State user!: User | undefined
   @AppStore.State dark!: boolean
+  @AppStore.State todayDateTitle!: string
+  @AppStore.State todoDialog!: boolean
+  @AppStore.Mutation setTodayTitle!: (todayDateTitle: string) => void
+  declare $vuetify: any
 
   created() {
     login()
+  }
+
+  mounted() {
+    setInterval(() => {
+      this.updateNow()
+    }, 1000)
   }
 
   get style() {
@@ -39,6 +51,14 @@ export default class App extends Vue {
 
   goToTodorant() {
     window.location.href = 'https://todorant.com'
+  }
+
+  private updateNow() {
+    const newTodayTitle = getDateString(getTodayWithStartOfDay())
+    if (this.todayDateTitle !== newTodayTitle && !this.todoDialog) {
+      this.setTodayTitle(newTodayTitle)
+      serverBus.$emit('refreshRequested')
+    }
   }
 }
 </script>
