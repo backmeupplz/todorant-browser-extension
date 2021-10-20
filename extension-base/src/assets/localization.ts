@@ -1,8 +1,7 @@
 export const messages = {
   en: {
     encryption: {
-      info:
-        'Use this section with the utmost caution! Encryption will not work unless you add a password. There will be two types of tasks: encrypted and unencrypted. All new tasks will be encrypted. Old todos can be converted to be encrypted with the button below. If you lose the password there will be no way to recover tasks.',
+      info: 'Use this section with the utmost caution! Encryption will not work unless you add a password. There will be two types of tasks: encrypted and unencrypted. All new tasks will be encrypted. Old todos can be converted to be encrypted with the button below. If you lose the password there will be no way to recover tasks.',
       switch: 'Encrypt todos',
       password: 'Password',
       encryptAllButton: 'Encrypt all',
@@ -18,8 +17,12 @@ export const messages = {
     search: 'Search',
     qr: {
       code: 'QR code',
-      description:
-        'Use this QR code to login on mobile devices. This picture is a password, do not share it with anyone!',
+      description: {
+        app_login:
+          'Use this QR code to login on mobile devices. This picture is a password, do not share it with anyone!',
+        web_login:
+          'Login in the Todorant mobile app, then go to the Settings, then tap the "Add devices" button under the "Account" section, then scan this QR code to allow login to Todorant here. Remember: this QR code is only valid for 10 minutes!',
+      },
     },
     breakdown: {
       request:
@@ -33,8 +36,7 @@ export const messages = {
     },
     supportAlert: {
       title: 'Support',
-      text:
-        'If you have any questions or suggestions, feel free to <a href="mailto:todorant@borodutch.com">send me an email</a>, <a href="https://t.me/borodutch" target="_blank">contact me on Telegram</a> or <a href="https://t.me/todorant_feedback" target="_blank">join our Telegram community group</a>!',
+      text: 'If you have any questions or suggestions, feel free to <a href="mailto:todorant@borodutch.com">send me an email</a>, <a href="https://t.me/borodutch" target="_blank">contact me on Telegram</a> or <a href="https://t.me/todorant_feedback" target="_blank">join our Telegram community group</a>!',
     },
     loginMobile: {
       telegram: {
@@ -91,56 +93,47 @@ export const messages = {
           {
             name: 'Sergey Romanov',
             username: 'Gendoor',
-            text:
-              'Messages in the subscription part are cute :)\n\nThank you for the simple service thriving for the ideal. Turned out that it not only helps to be productive but also proactive. Little daily improvements confidently enhance life, and the free mind is constantly looking how to fill now emptied todo list so that it could feel the pleasure of completing tasks again and again — and it is a direct route towards improving everything surrounding me.\n\nAll in all, Todorant, no matter how simple at first glance, can become a faithful ally in any business. Thank you, Nikita, for unleashing the aspects of true productivity and sharing them with us in a convenient solution.\n\nThankful Todorant subscriber.',
+            text: 'Messages in the subscription part are cute :)\n\nThank you for the simple service thriving for the ideal. Turned out that it not only helps to be productive but also proactive. Little daily improvements confidently enhance life, and the free mind is constantly looking how to fill now emptied todo list so that it could feel the pleasure of completing tasks again and again — and it is a direct route towards improving everything surrounding me.\n\nAll in all, Todorant, no matter how simple at first glance, can become a faithful ally in any business. Thank you, Nikita, for unleashing the aspects of true productivity and sharing them with us in a convenient solution.\n\nThankful Todorant subscriber.',
           },
           {
             name: 'Dinislam Sad',
             username: 'Azerzet',
-            text:
-              "The main advantages that I, and I'm sure others, liked.\n1. Simple and convenient interface.\n2. Missed tasks automatically become frogs, and an option to make a task a frog initially.\n3. /done command is a must, and thank you for it, Nikita. I used Todoist, Wunderlist, Bitrix24. All of them are overcomplicated.\n4. Telegram bot.",
+            text: "The main advantages that I, and I'm sure others, liked.\n1. Simple and convenient interface.\n2. Missed tasks automatically become frogs, and an option to make a task a frog initially.\n3. /done command is a must, and thank you for it, Nikita. I used Todoist, Wunderlist, Bitrix24. All of them are overcomplicated.\n4. Telegram bot.",
           },
           {
             name: 'Aleksei Kaut',
             username: 'aleksei_kaut',
-            text:
-              'After I created the first tasks and switched to the "Current" tab — I was surprised that I had only one task and that I needed to complete it before moving on. This idea with one task and concentration on it struck me, it seems obvious, but I couldn\'t use it before.\n\nI usually tracked tasks and ideas in Notes, which should be done soon, but I did not approach it as a system. I have been using the service for a couple of weeks, not very actively, but I think this is a very strong way to systemize the affairs and tasks.\n\nThank you for your work!',
+            text: 'After I created the first tasks and switched to the "Current" tab — I was surprised that I had only one task and that I needed to complete it before moving on. This idea with one task and concentration on it struck me, it seems obvious, but I couldn\'t use it before.\n\nI usually tracked tasks and ideas in Notes, which should be done soon, but I did not approach it as a system. I have been using the service for a couple of weeks, not very actively, but I think this is a very strong way to systemize the affairs and tasks.\n\nThank you for your work!',
           },
           {
             name: 'Anton',
             username: 'mas1311',
-            text:
-              'Tested Todorant. At first, I was skeptical (I tried a lot of planning services already), but I realized that it works effectively and is very easy to use.\n\nPlus, for reasons unknown to me, when all the tasks are completed for the day, strong satisfaction appears, which was absent in other planners (there was something like "well, that was everything... or not?").\n\nThank you for your work!',
+            text: 'Tested Todorant. At first, I was skeptical (I tried a lot of planning services already), but I realized that it works effectively and is very easy to use.\n\nPlus, for reasons unknown to me, when all the tasks are completed for the day, strong satisfaction appears, which was absent in other planners (there was something like "well, that was everything... or not?").\n\nThank you for your work!',
           },
           {
             name: 'Willsey Paslen',
             username: 'WillseyPaslen',
-            text:
-              'Thanks for the great service. Enough time has passed so that I can say — it helps me. Thanks, Nikita 😁 And good luck with the app.',
+            text: 'Thanks for the great service. Enough time has passed so that I can say — it helps me. Thanks, Nikita 😁 And good luck with the app.',
           },
           {
             name: 'Igor Malinkin',
             username: 'sxe4kilo',
-            text:
-              'I started to do at least something with Todorant, so my productivity went up from 0.',
+            text: 'I started to do at least something with Todorant, so my productivity went up from 0.',
           },
           {
             name: 'Vladimir Dubenko',
             username: 'dubenko_v',
-            text:
-              "Your service is awesome in terms of at least three things:\n1. Convenient — it is minimalistic!\n2. It instills a habit.\n3. Strange as it may seem, it doesn't force you to think rationally.\n\nI'm irrational by nature, I can't just lead 1 project (I burn out quickly). My life is multitasking! 3 projects in parallel are easy, but 3 is not enough... 7 sounds more like it. And your service allows you to achieve this. It is the alternation of tasks that prevents the brain from burning out in one particular direction. And somehow, magically, it alternates tasks from one project to another.",
+            text: "Your service is awesome in terms of at least three things:\n1. Convenient — it is minimalistic!\n2. It instills a habit.\n3. Strange as it may seem, it doesn't force you to think rationally.\n\nI'm irrational by nature, I can't just lead 1 project (I burn out quickly). My life is multitasking! 3 projects in parallel are easy, but 3 is not enough... 7 sounds more like it. And your service allows you to achieve this. It is the alternation of tasks that prevents the brain from burning out in one particular direction. And somehow, magically, it alternates tasks from one project to another.",
           },
           {
             name: 'Maksim Alekseyevich',
             username: 'MMAradiology',
-            text:
-              'I can\'t say that using Todorant changed my life. Can I say that this is a meaningful and very useful application/website? Yes, thousand times yes.\n\nI like Todorant, it lets me free up my "operating memory" and allows me to think about solving problems, not about remembering them. As Nikita (the creator) correctly wrote — with constant and correct use, tasks that used to cast true biblical fear will stop appearing. And this will not happen because the complex tasks will stop coming. It will become clear to you (and to me, and everyone) that "the road will be overpowered by those walking", "the way to the thousand miles begins with one step".',
+            text: 'I can\'t say that using Todorant changed my life. Can I say that this is a meaningful and very useful application/website? Yes, thousand times yes.\n\nI like Todorant, it lets me free up my "operating memory" and allows me to think about solving problems, not about remembering them. As Nikita (the creator) correctly wrote — with constant and correct use, tasks that used to cast true biblical fear will stop appearing. And this will not happen because the complex tasks will stop coming. It will become clear to you (and to me, and everyone) that "the road will be overpowered by those walking", "the way to the thousand miles begins with one step".',
           },
           {
             name: 'Kiku Reise',
             username: 'Kiku_Reise',
-            text:
-              "I've arranged my work, programming and hobby tasks. Even this review was written thanks to Todorant. Just one task, no complications. That's the whole point of the app — it helped me to concentrate without constantly shuffling my todos.\n\nOf course, you can set tasks and forget about them, but for me, it's easier to go back to a minimalistic application with one task, rather than to spend half a day looking for what task to work on now out of a hundred planned in Telegram or Notion.\n\nI was especially pleased with the update with hashtags — now all stats are on the palm of my hand, I can track and share with friends how many tasks I have completed this month.\n\nThank you a lot for Todorant!",
+            text: "I've arranged my work, programming and hobby tasks. Even this review was written thanks to Todorant. Just one task, no complications. That's the whole point of the app — it helped me to concentrate without constantly shuffling my todos.\n\nOf course, you can set tasks and forget about them, but for me, it's easier to go back to a minimalistic application with one task, rather than to spend half a day looking for what task to work on now out of a hundred planned in Telegram or Notion.\n\nI was especially pleased with the update with hashtags — now all stats are on the palm of my hand, I can track and share with friends how many tasks I have completed this month.\n\nThank you a lot for Todorant!",
           },
         ],
       },
@@ -149,6 +142,7 @@ export const messages = {
       crossplatform: {
         title: 'Truly cross-platform',
       },
+      mobile: 'Login with mobile app',
     },
     menu: {
       darkMode: {
@@ -165,6 +159,7 @@ export const messages = {
         google: 'Could not log in with Google',
         telegram: 'Could not log in with Telegram',
         apple: 'Could not log in with Apple',
+        mobile: 'Could not log in with mobile app',
       },
       internal: 'Internal server error',
       loadTodos: 'Could not fetch todos',
@@ -183,6 +178,9 @@ export const messages = {
       epic: {
         numberError: 'Should be a number',
         greaterThanZeroError: 'Should be greater than 0',
+      },
+      tag: {
+        whitespaces: "Tags shouldn't contain spaces",
       },
     },
     close: 'Close',
@@ -223,7 +221,7 @@ export const messages = {
       bonus: {
         title: 'Bonus features',
         rules: [
-          'User keyboard shortcuts when on desktop! You can (a)dd, (b)reakdown, switch to (c)urrent, mark as (d)one and switch to (p)lanning. To add an additional task slot while adding tasks, you can use Ctrl+Shift+A.',
+          'Use keyboard shortcuts when on desktop! You can (a)dd, (b)reakdown, switch to (c)urrent, mark as (d)one and switch to (p)lanning. To add an additional task slot while adding tasks, you can use Ctrl+Shift+A.',
         ],
       },
     },
@@ -267,6 +265,8 @@ export const messages = {
       telegram: 'Telegram',
       coloredCardBackgrounds: 'Color tasks with hashtag colors',
       newLineOnReturn: 'Insert new line on enter',
+      removeCompletedFromCalendar:
+        'Remove completed todos from Google Calendar',
     },
     allDoneTitle: 'Congratulations!',
     allDoneText:
@@ -405,8 +405,7 @@ export const messages = {
     googleCalendarDisableSuccess: 'Google Calendar disabled',
     googleCalendarEnableSuccess: 'Google Calendar enabled',
     spread: {
-      hint:
-        'Choose tasks to spread, choose dates to spread over, press a button and see how selected tasks spread evenly between the selected dates',
+      hint: 'Choose tasks to spread, choose dates to spread over, press a button and see how selected tasks spread evenly between the selected dates',
       spreading: 'Spreading',
       chooseTasks: 'Click on the tasks to spread',
       between: 'between',
@@ -445,6 +444,8 @@ export const messages = {
       intoEpic: 'Make an Epic',
       epicGoal: 'Epic goal',
       name: 'Epic name',
+      epicForeword:
+        'Select the number of tasks that has to be completed with this hashtag. This will turn the hashtag into an epic. The epic progress will be displayed on the Current page.',
     },
     success: 'Success!',
     notLogginedBody: 'Please, login at ',
@@ -505,16 +506,21 @@ export const messages = {
     googleCalendarGotIt: 'Got it!',
     frogsAlert: {
       title: "Stop! It's illegal",
-      text:
-        "Don't break the rules. If you have any frogs today — finish them first, break them down, move them to future days or remove the frog flag from them. Please, just don't ignore the frogs!",
+      text: "Don't break the rules. If you have any frogs today — finish them first, break them down, move them to future days or remove the frog flag from them. Please, just don't ignore the frogs!",
     },
     to: 'To',
     from: 'From',
+    unEpicInfo: 'Reset epic',
+    unEpicConfirm: 'Are you sure you want to reset the epic?',
+    breakdownMessage: {
+      title: 'Repetitive task',
+      text: 'This is a repetitive task, do you want to break down it or complete it?',
+      complete: 'Complete',
+    },
   },
   ru: {
     encryption: {
-      info:
-        'Используйте эту секцию с максимальной осторожностью! Шифрование не будет работать, если вы не введете пароль. Дальше будет два типа задач: зашифрованные и незашифрованные. Все новые задачи будут зашифрованными. Старые задачи можно будет зашифровать, нажав на кнопку ниже. Если вы потеряете пароль, восстановить задачи будет невозможно.',
+      info: 'Используйте эту секцию с максимальной осторожностью! Шифрование не будет работать, если вы не введете пароль. Дальше будет два типа задач: зашифрованные и незашифрованные. Все новые задачи будут зашифрованными. Старые задачи можно будет зашифровать, нажав на кнопку ниже. Если вы потеряете пароль, восстановить задачи будет невозможно.',
       switch: 'Шифровать задачи',
       password: 'Пароль',
       encryptAllButton: 'Зашифровать все',
@@ -530,8 +536,12 @@ export const messages = {
     search: 'Поиск',
     qr: {
       code: 'QR код',
-      description:
-        'Используйте этот QR код, чтобы войти в вашу учетную запись на мобильных устройствах. Это изображение — пароль, никому его не передавайте!',
+      description: {
+        app_login:
+          'Используйте этот QR код, чтобы войти в вашу учетную запись на мобильных устройствах. Это изображение — пароль, никому его не передавайте!',
+        web_login:
+          'Залогиньтесь в мобильном приложении Тудуранта, зайдите в Настройки, нажмите на "Добавить устройства" в секции "Аккаунт" и просканируйте этот QR код для того, чтобы разрешить войти в вашу учетную запись в браузере. Помните: этот QR код работает только 10 минут!',
+      },
     },
     breakdown: {
       request:
@@ -545,8 +555,7 @@ export const messages = {
     },
     supportAlert: {
       title: 'Поддержка',
-      text:
-        'Если у вас есть какие-либо вопросы или предложения, <a href="mailto:todorant@borodutch.com">напишите мне имеил</a>, <a href="https://t.me/borodutch" target="_blank">в Телеграм</a> или <a href="https://t.me/todorant_feedback" target="_blank">присоединитесь к нашей группе сообщества в Телеграме</a>!',
+      text: 'Если у вас есть какие-либо вопросы или предложения, <a href="mailto:todorant@borodutch.com">напишите мне имеил</a>, <a href="https://t.me/borodutch" target="_blank">в Телеграм</a> или <a href="https://t.me/todorant_feedback" target="_blank">присоединитесь к нашей группе сообщества в Телеграме</a>!',
     },
     loginMobile: {
       telegram: {
@@ -598,49 +607,40 @@ export const messages = {
         reviews: [
           {
             name: 'Sergey Romanov',
-            text:
-              'Милые сообщения в разделе подписки Тудуранта :)\n\nБлагодарю за простой и стремящийся к идеальному сервис. Оказалось, что он помогает быть не только продуктивным, но и проактивным. Маленькие улучшения каждый день уверенно подтягивают за собой отстающие звенья, а свободный от задач разум постоянно ищет, чем бы заполнить опустевший список задач, чтобы снова и снова получать удовольствие от их выполнения и связанных с этим перемен — и это прямой путь к улучшению всего, что меня окружает.\n\nВ общем, Тудурант, каким бы простым он ни казался на первый взгляд, способен стать верным соратником в любых делах. Спасибо, Никита, что осознал аспекты истинной продуктивности и поделился ими с нами в удобном решении.\n\nБлагодарный подписчик Тудуранта.',
+            text: 'Милые сообщения в разделе подписки Тудуранта :)\n\nБлагодарю за простой и стремящийся к идеальному сервис. Оказалось, что он помогает быть не только продуктивным, но и проактивным. Маленькие улучшения каждый день уверенно подтягивают за собой отстающие звенья, а свободный от задач разум постоянно ищет, чем бы заполнить опустевший список задач, чтобы снова и снова получать удовольствие от их выполнения и связанных с этим перемен — и это прямой путь к улучшению всего, что меня окружает.\n\nВ общем, Тудурант, каким бы простым он ни казался на первый взгляд, способен стать верным соратником в любых делах. Спасибо, Никита, что осознал аспекты истинной продуктивности и поделился ими с нами в удобном решении.\n\nБлагодарный подписчик Тудуранта.',
           },
           {
             name: 'Dinislam Sad',
-            text:
-              'Главные плюсы, которые лично мне да и уверен остальным также понравились.\n1. Простой и удобный интерфейс.\n2. Пропущенные задачи автоматически становятся лягушками, и также возможность изначально отметить задачу "лягушкой".\n3. Категория /done это просто необходимость, и спасибо за это, Никита. Я юзал Тудуист, Вундерлист, Мои Дела. Все эти программы перегруженные слишком.\n4. Телеграм бот.',
+            text: 'Главные плюсы, которые лично мне да и уверен остальным также понравились.\n1. Простой и удобный интерфейс.\n2. Пропущенные задачи автоматически становятся лягушками, и также возможность изначально отметить задачу "лягушкой".\n3. Категория /done это просто необходимость, и спасибо за это, Никита. Я юзал Тудуист, Вундерлист, Мои Дела. Все эти программы перегруженные слишком.\n4. Телеграм бот.',
           },
           {
             name: 'Aleksei Kaut',
-            text:
-              'После того как создал первые задачи и переключился на вкладку "Текущие" — офигел от того, что передо мной только одна задача и что надо завершить ее перед тем как идти дальше. Эта идея с одной задачей и концентрацией на ней меня поразила, вроде очевидно, но раньше так не мог.\n\nЯ обычно писал в Notes задачи и идеи, что нужно сделать в ближайшем времени, но не подходил к этому как к системе. Пользуюсь сервисом пару недель и не очень активно, но думаю это очень сильный подход к систематизации дел и задач.\n\nСпасибо за твою работу!',
+            text: 'После того как создал первые задачи и переключился на вкладку "Текущие" — офигел от того, что передо мной только одна задача и что надо завершить ее перед тем как идти дальше. Эта идея с одной задачей и концентрацией на ней меня поразила, вроде очевидно, но раньше так не мог.\n\nЯ обычно писал в Notes задачи и идеи, что нужно сделать в ближайшем времени, но не подходил к этому как к системе. Пользуюсь сервисом пару недель и не очень активно, но думаю это очень сильный подход к систематизации дел и задач.\n\nСпасибо за твою работу!',
           },
           {
             name: 'Anton',
-            text:
-              'Протестировал тудурант. Сначала был скепсис (уж очень много перепробовал сервисов по планированию), но понял, что действительно эффективно работает и очень прост в использовании.\n\nПлюс, по неизвестной мне причине, когда выполняются все задачи на день появляется мощная гордость и удовлетворение, что отсутствовало в других планировщиках (там было что то в формате "ну вроде все.. или нет?").\n\nСпасибо за твои работы!',
+            text: 'Протестировал тудурант. Сначала был скепсис (уж очень много перепробовал сервисов по планированию), но понял, что действительно эффективно работает и очень прост в использовании.\n\nПлюс, по неизвестной мне причине, когда выполняются все задачи на день появляется мощная гордость и удовлетворение, что отсутствовало в других планировщиках (там было что то в формате "ну вроде все.. или нет?").\n\nСпасибо за твои работы!',
           },
           {
             name: 'Willsey Paslen',
-            text:
-              'Спасибо за отличный сервис. Прошло достаточно времени, чтобы точно можно было сказать — мне он помогает. Спасибо, Никита 😁 И удачи с приложением.',
+            text: 'Спасибо за отличный сервис. Прошло достаточно времени, чтобы точно можно было сказать — мне он помогает. Спасибо, Никита 😁 И удачи с приложением.',
           },
           {
             name: 'Игорь Малинкин',
-            text:
-              'с Тударантом я хоть что-то начал делать, так что моя производительность поднялась с 0.',
+            text: 'с Тударантом я хоть что-то начал делать, так что моя производительность поднялась с 0.',
           },
           {
             name: 'Владимир Дубенко',
-            text:
-              'Твой сервис потрясный в плане, как минимум, трех вещей:\n1. Удобен — вот реально ничего лишнего!\n2. Прививает привычку, как ты там писал в каком-то из постов, прям с языка снял в тот момент: мы — это набор привычек.\n3. Как ни странно, не заставляет рационально мыслить.\n\nЯ по своей натуре иррационален, я не могу просто вести 1 проект (я быстро выгораю). Я живу только многозадачностью! 3 проекта параллельно легко, но мало... 7 — вот это интересней. И твой сервис позволяет этого достигать. Именно чередование задач не дает возможности мозгу выгорать в одном конкретном направлении. А каким-то магическим образом чередует задачи с одного проекта на другой.',
+            text: 'Твой сервис потрясный в плане, как минимум, трех вещей:\n1. Удобен — вот реально ничего лишнего!\n2. Прививает привычку, как ты там писал в каком-то из постов, прям с языка снял в тот момент: мы — это набор привычек.\n3. Как ни странно, не заставляет рационально мыслить.\n\nЯ по своей натуре иррационален, я не могу просто вести 1 проект (я быстро выгораю). Я живу только многозадачностью! 3 проекта параллельно легко, но мало... 7 — вот это интересней. И твой сервис позволяет этого достигать. Именно чередование задач не дает возможности мозгу выгорать в одном конкретном направлении. А каким-то магическим образом чередует задачи с одного проекта на другой.',
           },
           {
             name: 'Maksim Alekseyevich',
             username: 'MMAradiology',
-            text:
-              'Сказать, что пользование Тудурантом изменило мою жизнь, я не могу. Сказать, что это значимое и очень полезное приложение/сайт? Да, хоть тысячу раз.\n\nМне Тудурант нравится, и он позволяет освободить свою "операционную память", позволить себе мыслить над решением проблемы, а не над её запоминанием. Как правильно написал Никита (создатель) — при постоянном и правильном использовании перестанут появляться задачи, которые раньше внушали поистине библейский страх. И это будет происходит не из-за того, что перестают поступать сложные задачи. Тебе (и мне, и всем) станет понятно — "дорогу осилит идущий", "путь в тысячу ли начинается с одного шага".',
+            text: 'Сказать, что пользование Тудурантом изменило мою жизнь, я не могу. Сказать, что это значимое и очень полезное приложение/сайт? Да, хоть тысячу раз.\n\nМне Тудурант нравится, и он позволяет освободить свою "операционную память", позволить себе мыслить над решением проблемы, а не над её запоминанием. Как правильно написал Никита (создатель) — при постоянном и правильном использовании перестанут появляться задачи, которые раньше внушали поистине библейский страх. И это будет происходит не из-за того, что перестают поступать сложные задачи. Тебе (и мне, и всем) станет понятно — "дорогу осилит идущий", "путь в тысячу ли начинается с одного шага".',
           },
           {
             name: 'Kiku Reise',
-            text:
-              'Я разгрузил свои задачи по работе, программированию и хобби. И даже этот отзыв написал благодаря фокусу от Тудуранта. Всего одна задача, никаких усложняющих приоритетов. В этом вся фишка сервиса — он помог мне сконцентрироваться, и не распыляясь поочередно выполнить таски.\n\nКонечно, можно проставить задачи и забить, но лично мне проще возвращаться к минималистичному приложению с одной задачкой, нежели пол дня искать в сохраненках Телеграма или Notion какую бы задачу сейчас выполнить из сотни запланированных.\n\nОсобенно порадовало обновление с хештегами — теперь вся статистика как на ладони, могу трекать и делиться с друзьями сколько задач по разработке я выполнил в этом месяце.\n\nБольшое спасибо за Тудурант!',
+            text: 'Я разгрузил свои задачи по работе, программированию и хобби. И даже этот отзыв написал благодаря фокусу от Тудуранта. Всего одна задача, никаких усложняющих приоритетов. В этом вся фишка сервиса — он помог мне сконцентрироваться, и не распыляясь поочередно выполнить таски.\n\nКонечно, можно проставить задачи и забить, но лично мне проще возвращаться к минималистичному приложению с одной задачкой, нежели пол дня искать в сохраненках Телеграма или Notion какую бы задачу сейчас выполнить из сотни запланированных.\n\nОсобенно порадовало обновление с хештегами — теперь вся статистика как на ладони, могу трекать и делиться с друзьями сколько задач по разработке я выполнил в этом месяце.\n\nБольшое спасибо за Тудурант!',
           },
         ],
       },
@@ -649,6 +649,7 @@ export const messages = {
       crossplatform: {
         title: 'По-настоящему кросс-платформенный',
       },
+      mobile: 'Войти через мобильное приложение',
     },
     menu: {
       darkMode: {
@@ -665,6 +666,7 @@ export const messages = {
         google: 'Не получилось зайти через Гугл',
         telegram: 'Не получилось зайти через Телеграм',
         apple: 'Не получилось зайти через Эпл',
+        mobile: 'Не получилось зайти через мобильное приложение',
       },
       internal: 'Внутренняя ошибка сервера',
       loadTodos: 'Не получилось загрузить задачи',
@@ -683,6 +685,9 @@ export const messages = {
       epic: {
         numberError: 'Должно быть цифрой',
         greaterThanZeroError: 'Должно быть больше 0',
+      },
+      tag: {
+        whitespaces: 'В теге не должно быть пробелов',
       },
     },
     close: 'Закрыть',
@@ -769,6 +774,8 @@ export const messages = {
       telegram: 'Телеграм',
       coloredCardBackgrounds: 'Окрашивать задачи цветами хештегов',
       newLineOnReturn: 'Переносить строку на enter',
+      removeCompletedFromCalendar:
+        'Удалять задачи из Гугл Календаря после выполнения',
     },
     allDoneTitle: 'Поздравляем!',
     allDoneText:
@@ -783,7 +790,7 @@ export const messages = {
     activeText:
       '🎉 Огромное спасибо за поддержку Тудуранта! Я надеюсь, что Тудурант уже улучшил вашу жизнь и будет улучшать в будущем! Ваша поддержка позволяет мне улучшать Тудурант каждый день, добавляя новые функции и упрощая рабочий процесс!',
     inactiveText:
-      '🐝 Похоже, ваш пробный период Тудуранта подошел к концу. Улучшил ли Тудурант вашу жизнь хотя бы на $5/месяц? Надеюсь, что да! Перейдем прямо к делу.\n\nДеловое предложение. Я получу: $5 в месяц, $36 в год (невероятная скидка в 40%) или $150 один раз. Вы получите: безграничную продуктивности и неограниченный Тудурант как бонус.\n\nЧто скажете?',
+      '🐝 Похоже, ваш пробный период Тудуранта подошел к концу. Улучшил ли Тудурант вашу жизнь хотя бы на $5/месяц? Надеюсь, что да! Перейдем прямо к делу.\n\nДеловое предложение. Я получу: $5 в месяц, $36 в год (невероятная скидка в 40%) или $150 один раз. Вы получите: безграничную продуктивность и неограниченный Тудурант как бонус.\n\nЧто скажете?',
     earlyAdopterText:
       '👏👏 — это я хлопаю вам стоя; вы — безумцы, которые согласились попробовать инструмент повышения персональной продуктивности Тудурант одними из первых. Можно сказать, вы — золотая тысяча пользователей, на отзывах которых и создавался Тудурант. Вы имеете полное право пользоваться Тудурантом столько, сколько вам угодно — для этого аккаунта никогда не будет введено никаких ограничений, вы заслужили это. Однако если вы заметили, что Тудурант резко изменил вашу жизнь к лучшему — вы все еще можете приобрести подписку, тем самым сказав простое, но очень важное для меня лично: "Спасибо". Вы никогда не потеряете статус "Ранний адоптер 🦄" — а подписку сможете отменить в любой момент. Спасибо большое, что вы продолжаете пользоваться Тудурантом — а я продолжу добавлять приятные функции в этот инструмент, который делает каждого из нас лучше. Удачи!',
     earlyAdopterTextBonus:
@@ -908,8 +915,7 @@ export const messages = {
     googleCalendarDisableSuccess: 'Гугл Календарь успешно отключен',
     googleCalendarEnableSuccess: 'Гугл Календарь успешно подключен',
     spread: {
-      hint:
-        'Выберите задачи для распределения, выберите дни для распределения, нажмите на кнопку, и выбранные задачи распределятся ровным слоем по выбранным датам',
+      hint: 'Выберите задачи для распределения, выберите дни для распределения, нажмите на кнопку, и выбранные задачи распределятся ровным слоем по выбранным датам',
       spreading: 'Распределяем',
       chooseTasks: 'Нажмите на задачи для распределения',
       between: 'между',
@@ -953,6 +959,8 @@ export const messages = {
       intoEpic: 'Сделать эпиком',
       epicGoal: 'Цель эпика',
       name: 'Название эпика',
+      epicForeword:
+        'Укажите количество задач, которые нужно выполнить по этому хештегу. Это превратит хештег в эпик. Прогресс эпиков показывается на Текущем.',
     },
     success: 'Успех!',
     notLogginedBody: 'Пожалуйста, войдите в аккаунт на ',
@@ -1015,16 +1023,21 @@ export const messages = {
     googleCalendarGotIt: 'Понятно!',
     frogsAlert: {
       title: 'Стоп! Это нелегально',
-      text:
-        'Не нарушайте правила. Если у вас есть сегодня лягушки, то завершите их, разбейте их, перенесите их на будущие даты или уберите у них статус лягушки. Пожалуйста, не игнорируйте лягушек!',
+      text: 'Не нарушайте правила. Если у вас есть сегодня лягушки, то завершите их, разбейте их, перенесите их на будущие даты или уберите у них статус лягушки. Пожалуйста, не игнорируйте лягушек!',
     },
     to: 'Для',
     from: 'От',
+    unEpicInfo: 'Сбросить эпик',
+    unEpicConfirm: 'Вы уверены, что хотите сбросить эпик?',
+    breakdownMessage: {
+      title: 'Повторяющаяся задача',
+      text: 'Это повторяющаяся задача, вы хотите ее разбить или завершить?',
+      complete: 'Завершить',
+    },
   },
   ua: {
     encryption: {
-      info:
-        'Використовуйте цю секцію з максимальною обережністю! Шифрування не працюватиме, якщо ви не введете пароль. Далі буде два типи задач: зашифровані та незашифровані. Всі нові задачі будуть зашифрованими. Старі задачі можна буде зашифрувати, натиснувши на кнопку нижче. Якщо ви втратите пароль, відновити задачі буде неможливо.',
+      info: 'Використовуйте цю секцію з максимальною обережністю! Шифрування не працюватиме, якщо ви не введете пароль. Далі буде два типи задач: зашифровані та незашифровані. Всі нові задачі будуть зашифрованими. Старі задачі можна буде зашифрувати, натиснувши на кнопку нижче. Якщо ви втратите пароль, відновити задачі буде неможливо.',
       switch: 'Шифрувати задачi',
       password: 'Пароль',
       encryptAllButton: 'Зашифрувати всі',
@@ -1040,8 +1053,6 @@ export const messages = {
     search: 'Пошук',
     qr: {
       code: 'QR код',
-      description:
-        'Використовуйте цей QR код, щоб увійти до вашого профілю на мобільних пристроях. Це зображення — пароль, нікому його не передавайте!',
     },
     breakdown: {
       request:
@@ -1054,8 +1065,7 @@ export const messages = {
     },
     supportAlert: {
       title: 'Підтримка',
-      text:
-        'Якщо у вас є якісь питання або пропозиції, <a href="mailto:todorant@borodutch.com">напишіть мені на імейл</a>, <a href="https://t.me/borodutch" target="_blank">в Телеграм</a> або <a href="https://t.me/todorant_feedback" target="_blank">приєднуйтесь до нашої групи в Телеграмі</a>!',
+      text: 'Якщо у вас є якісь питання або пропозиції, <a href="mailto:todorant@borodutch.com">напишіть мені на імейл</a>, <a href="https://t.me/borodutch" target="_blank">в Телеграм</a> або <a href="https://t.me/todorant_feedback" target="_blank">приєднуйтесь до нашої групи в Телеграмі</a>!',
     },
     loginMobile: {
       telegram: {
@@ -1110,49 +1120,40 @@ export const messages = {
         reviews: [
           {
             name: 'Sergey Romanov',
-            text:
-              "Милі повідомлення у розділі підписки Тудуранту :) Дякую за простий сервіс, що прагне до ідеалу. Виявилося, що він допомагає бути не тільки продуктивним, але й проактивним. Маленькі покращення кожен день впевнено підтягують за собою відстаючі ланки, а вільний від задач розум постійно шукає, чим заповнити спорожнілий список задач, щоб знов і знов отримувати задоволення від їх виконання і пов'язаних з цим змін — і це прямий шлях до покращення всього, що мене оточує. Загалом, Тудурант, яким би простим він не здавався на перший погляд, здатен стати вірним соратником у будь-яких справах. Дякую, Микито, що усвідомив аспекти істинної продуктивності та поділився ними із нами у зручному рішенні. Вдячний підписник Тудуранту.",
+            text: "Милі повідомлення у розділі підписки Тудуранту :) Дякую за простий сервіс, що прагне до ідеалу. Виявилося, що він допомагає бути не тільки продуктивним, але й проактивним. Маленькі покращення кожен день впевнено підтягують за собою відстаючі ланки, а вільний від задач розум постійно шукає, чим заповнити спорожнілий список задач, щоб знов і знов отримувати задоволення від їх виконання і пов'язаних з цим змін — і це прямий шлях до покращення всього, що мене оточує. Загалом, Тудурант, яким би простим він не здавався на перший погляд, здатен стати вірним соратником у будь-яких справах. Дякую, Микито, що усвідомив аспекти істинної продуктивності та поділився ними із нами у зручному рішенні. Вдячний підписник Тудуранту.",
           },
           {
             name: 'Dinislam Sad',
-            text:
-              'Головні плюси, які особисто мені, та і впевнений, іншим також сподобалися.\n1. Простий і зручний інтерфейс.\n2. Пропущені завдання автоматично стають жабами, а також можливість спочатку відмітити завдання "жабою".\n3. Категорія /done це просто необхідність, і дякую за це, Микито. Я юзав Тудуіст, Вундерліст, Мої Справи. Всі ці програми занадто перевантажені.\n4. Телеграм-бот.',
+            text: 'Головні плюси, які особисто мені, та і впевнений, іншим також сподобалися.\n1. Простий і зручний інтерфейс.\n2. Пропущені завдання автоматично стають жабами, а також можливість спочатку відмітити завдання "жабою".\n3. Категорія /done це просто необхідність, і дякую за це, Микито. Я юзав Тудуіст, Вундерліст, Мої Справи. Всі ці програми занадто перевантажені.\n4. Телеграм-бот.',
           },
           {
             name: 'Aleksei Kaut',
-            text:
-              'Після того, як створив свої перші завдання і переключився на вкладку "Поточні" — офігів від того, що переді мною тільки одне завдання і що необхідно завершити його перед тим, як іти далі. Ця ідея з єдиним завданням і концентрацією на ньому мене вразила, здавалося б очевидно, але раніше так не міг.\n\nЯ зазвичай писав в Notes завдання та ідеї, що потрібно зробити найближчим часом, але не підходив до цього як до системи. Користуюся сервісом кілька тижнів і не дуже активно, але думаю, що це дуже сильний підхід до систематизації справ і завдань.\n\nДякую за твою роботу!',
+            text: 'Після того, як створив свої перші завдання і переключився на вкладку "Поточні" — офігів від того, що переді мною тільки одне завдання і що необхідно завершити його перед тим, як іти далі. Ця ідея з єдиним завданням і концентрацією на ньому мене вразила, здавалося б очевидно, але раніше так не міг.\n\nЯ зазвичай писав в Notes завдання та ідеї, що потрібно зробити найближчим часом, але не підходив до цього як до системи. Користуюся сервісом кілька тижнів і не дуже активно, але думаю, що це дуже сильний підхід до систематизації справ і завдань.\n\nДякую за твою роботу!',
           },
           {
             name: 'Anton',
-            text:
-              'Протестував Тудурант. Спочатку був скепсів (дуже вже багато перепробував сервісів з планування), але зрозумів, що дійсно ефективно працює і дуже простий у використанні.\n\nПлюс, за невідомою мені причини, коли виконуються всі завдання на день і з\'являється потужна гордість і задоволення, що було відсутньо у інших сервісах планування (там було щось у форматі "ну здається все.. чи ні?").\n\nДякую за твої роботи!',
+            text: 'Протестував Тудурант. Спочатку був скепсів (дуже вже багато перепробував сервісів з планування), але зрозумів, що дійсно ефективно працює і дуже простий у використанні.\n\nПлюс, за невідомою мені причини, коли виконуються всі завдання на день і з\'являється потужна гордість і задоволення, що було відсутньо у інших сервісах планування (там було щось у форматі "ну здається все.. чи ні?").\n\nДякую за твої роботи!',
           },
           {
             name: 'Willsey Paslen',
-            text:
-              'Дякую за чудовий сервіс. Пройшло достатньо часу, щоб можна було точно сказати — мені від допомагає. Дякую, Микито😁. І удачі з додатком.',
+            text: 'Дякую за чудовий сервіс. Пройшло достатньо часу, щоб можна було точно сказати — мені від допомагає. Дякую, Микито😁. І удачі з додатком.',
           },
           {
             name: 'Ігор Малінкін',
-            text:
-              'З Тудурантом я почав хоч щось робити, так що моя продуктивність піднялася з 0.',
+            text: 'З Тудурантом я почав хоч щось робити, так що моя продуктивність піднялася з 0.',
           },
           {
             name: 'Володимир Дубенко',
-            text:
-              'Твій сервіс приголомшливий у плані, як мінімум, трьох речей:\n1. Зручний — от взагалі нічого зайвого!\n2. Прищеплює звичку, як ти там писав у якомусь з постів, прям з язику зняв у той момент: ми — це набір звичок.\n3. Як не дивно, змушує раціонально мислити.\n\nЯ за своєю натурою ірраціональний, я не можу просто вести 1 проект (я швидко вигоряю). Я живу тільки багатозадачністю! 3 проекти паралельно — легко, але мало... 7 — ось це вже цікавіше. І твій сервіс дозволяє цього досягати. Саме чергування завдань не дозволяє мозку вигоряти у одному конкретному напрямку. А якимось магічним чином чергує завдання з одного проекту на інший.',
+            text: 'Твій сервіс приголомшливий у плані, як мінімум, трьох речей:\n1. Зручний — от взагалі нічого зайвого!\n2. Прищеплює звичку, як ти там писав у якомусь з постів, прям з язику зняв у той момент: ми — це набір звичок.\n3. Як не дивно, змушує раціонально мислити.\n\nЯ за своєю натурою ірраціональний, я не можу просто вести 1 проект (я швидко вигоряю). Я живу тільки багатозадачністю! 3 проекти паралельно — легко, але мало... 7 — ось це вже цікавіше. І твій сервіс дозволяє цього досягати. Саме чергування завдань не дозволяє мозку вигоряти у одному конкретному напрямку. А якимось магічним чином чергує завдання з одного проекту на інший.',
           },
           {
             name: 'Maksim Alekseyevich',
             username: 'MMAradiology',
-            text:
-              'Сказати, що використання Тудуранту змінило моє життя, я не можу. Сказати, що це дуже значимий і корисний додаток/сайт? Так, хоч тисячу разів.\n\nМені Тудурант подобається, і він дозволяє звільнити свою "операційну пам\'ять", дозволити собі мислити над вирішенням проблеми, а не над її запам\'ятовуванням. Як правильно писав Микита (творець) — при при постійному і правильному використанні перестануть з\'являтися завдання, які раніше вселяли воістину біблійський страх. І це буде відбуватися не через те, що перестають поступати складні завдання. Тобі (і мені, і всім) стане зрозуміло — "дорогу здолає той, хто йде", "шлях в тисячу лі починається одного кроку".',
+            text: 'Сказати, що використання Тудуранту змінило моє життя, я не можу. Сказати, що це дуже значимий і корисний додаток/сайт? Так, хоч тисячу разів.\n\nМені Тудурант подобається, і він дозволяє звільнити свою "операційну пам\'ять", дозволити собі мислити над вирішенням проблеми, а не над її запам\'ятовуванням. Як правильно писав Микита (творець) — при при постійному і правильному використанні перестануть з\'являтися завдання, які раніше вселяли воістину біблійський страх. І це буде відбуватися не через те, що перестають поступати складні завдання. Тобі (і мені, і всім) стане зрозуміло — "дорогу здолає той, хто йде", "шлях в тисячу лі починається одного кроку".',
           },
           {
             name: 'Kiku Reise',
-            text:
-              'Я розвантажив свої завдання по роботі, програмування та хобі. Навіть цей відгук написав завдяки фокусу від Тудуранту. Всього одне завдання, та ніяких ускладнюючих пріоритетів. У цьому вся фішка сервісу — він допоміг мені сконцентруватися, та не розпорошуючись по черзі виконати таски.\n\nЗвичайно, можна проставити завдання й забити, але мені простіше повертатися до мінімалістичного додатка з однією задачею, ніж пів дня шукати в Телеграмi або Notion щоб виконакти одне завдання із сотні запланованих.\n\nОсобливо сподобалося оновлення з хештегами — тепер вся статистика як на долоні, можу трекать та ділитися з друзями скільки завдань з розробки я виконав у цьому місяці.\n\nЩиро дякую за Тудурант!',
+            text: 'Я розвантажив свої завдання по роботі, програмування та хобі. Навіть цей відгук написав завдяки фокусу від Тудуранту. Всього одне завдання, та ніяких ускладнюючих пріоритетів. У цьому вся фішка сервісу — він допоміг мені сконцентруватися, та не розпорошуючись по черзі виконати таски.\n\nЗвичайно, можна проставити завдання й забити, але мені простіше повертатися до мінімалістичного додатка з однією задачею, ніж пів дня шукати в Телеграмi або Notion щоб виконакти одне завдання із сотні запланованих.\n\nОсобливо сподобалося оновлення з хештегами — тепер вся статистика як на долоні, можу трекать та ділитися з друзями скільки завдань з розробки я виконав у цьому місяці.\n\nЩиро дякую за Тудурант!',
           },
         ],
       },
@@ -1354,8 +1355,7 @@ export const messages = {
   },
   it: {
     encryption: {
-      info:
-        'Usa questa sezione con la massima cautela! La crittografia non funzionerà se non si aggiunge una password. Esistono due tipi di attività: crittografate e non crittografate. Tutte le nuove attività saranno crittografate. I vecchi compiti possono essere convertiti per essere crittografati con il pulsante in basso. Se perdi la password non ci sarà modo di recuperare le attività.',
+      info: 'Usa questa sezione con la massima cautela! La crittografia non funzionerà se non si aggiunge una password. Esistono due tipi di attività: crittografate e non crittografate. Tutte le nuove attività saranno crittografate. I vecchi compiti possono essere convertiti per essere crittografati con il pulsante in basso. Se perdi la password non ci sarà modo di recuperare le attività.',
       switch: 'Attività criptate',
       password: 'Password',
       encryptAllButton: 'Cripta tutto',
@@ -1371,8 +1371,6 @@ export const messages = {
     search: 'Ricerca',
     qr: {
       code: 'Codice QR',
-      description:
-        'Usa questo codice QR per accedere sui dispositivi mobili. Questa immagine è una password, non condividerla con nessuno!',
     },
     breakdown: {
       request:
@@ -1385,8 +1383,7 @@ export const messages = {
     },
     supportAlert: {
       title: 'Supporto',
-      text:
-        'Se hai delle domande o dei suggerimenti, sentiti libero di <a href="mailto:todorant@borodutch.com">mandarmi un\'email</a>, <a href="https://t.me/borodutch" target="_blank">scrivermi su Telegram</a> oppure <a href="https://t.me/todorant_feedback" target="_blank">entrare nel gruppo Telegram della nostra community</a>!',
+      text: 'Se hai delle domande o dei suggerimenti, sentiti libero di <a href="mailto:todorant@borodutch.com">mandarmi un\'email</a>, <a href="https://t.me/borodutch" target="_blank">scrivermi su Telegram</a> oppure <a href="https://t.me/todorant_feedback" target="_blank">entrare nel gruppo Telegram della nostra community</a>!',
     },
     loginMobile: {
       telegram: {
@@ -1533,8 +1530,7 @@ export const messages = {
   },
   'pt-BR': {
     encryption: {
-      info:
-        'Use esta seção com o máximo cuidado! A criptografia não funcionará, a menos que você adicione uma senha. Haverá dois tipos de tarefas: criptografadas e não criptografadas. Todas as novas tarefas serão criptografadas. Todos as antigas podem ser convertidas para criptografadas com o botão abaixo. Se você perder a senha, não haverá como recuperar as tarefas.',
+      info: 'Use esta seção com o máximo cuidado! A criptografia não funcionará, a menos que você adicione uma senha. Haverá dois tipos de tarefas: criptografadas e não criptografadas. Todas as novas tarefas serão criptografadas. Todos as antigas podem ser convertidas para criptografadas com o botão abaixo. Se você perder a senha, não haverá como recuperar as tarefas.',
       switch: 'Encriptar tarefas',
       password: 'Senha',
       encryptAllButton: 'Encriptar tudo',
@@ -1550,8 +1546,6 @@ export const messages = {
     search: 'Procurar',
     qr: {
       code: 'QR code',
-      description:
-        'Use este QR Code para fazer login em dispositivos móveis. Esta imagem é uma senha, não a compartilhe com ninguém!',
     },
     breakdown: {
       request:
@@ -1564,8 +1558,7 @@ export const messages = {
     },
     supportAlert: {
       title: 'Ajuda',
-      text:
-        'Se você tem qualquer dúvida ou sugestão, sinta-se a vontade para <a href="mailto:todorant@borodutch.com">enviar-me um email</a>, <a href="https://t.me/borodutch" target="_blank">contact me on Telegram</a> ou<a href="https://t.me/todorant_feedback" target="_blank">entrar na nossa comunidade no Telegram</a>!',
+      text: 'Se você tem qualquer dúvida ou sugestão, sinta-se a vontade para <a href="mailto:todorant@borodutch.com">enviar-me um email</a>, <a href="https://t.me/borodutch" target="_blank">contact me on Telegram</a> ou<a href="https://t.me/todorant_feedback" target="_blank">entrar na nossa comunidade no Telegram</a>!',
     },
     loginMobile: {
       telegram: {
@@ -1621,8 +1614,7 @@ export const messages = {
           null,
           null,
           {
-            text:
-              'Comecei a fazer pelo menos alguma coisa com Todorant, por isso a minha produtividade subiu de 0.',
+            text: 'Comecei a fazer pelo menos alguma coisa com Todorant, por isso a minha produtividade subiu de 0.',
           },
         ],
       },
@@ -1836,8 +1828,7 @@ export const messages = {
   },
   ro: {
     encryption: {
-      info:
-        'Folosiți această secțiune cu atenție maximă! Criptarea nu va funcționa dacă nu veți introduce o parolă. După finalizare vor exista două tipuri de task-uri: criptate și necriptate. Toate task-urile noi vor fi criptate. Task-urile vechi pot fi criptate făcând clic pe butonul de mai jos. Dacă vă pierdeți parola, va fi imposibilă recuperarea task-urilor.',
+      info: 'Folosiți această secțiune cu atenție maximă! Criptarea nu va funcționa dacă nu veți introduce o parolă. După finalizare vor exista două tipuri de task-uri: criptate și necriptate. Toate task-urile noi vor fi criptate. Task-urile vechi pot fi criptate făcând clic pe butonul de mai jos. Dacă vă pierdeți parola, va fi imposibilă recuperarea task-urilor.',
       switch: 'Criptarea task-ului',
       encryptAllButton: 'Criptează tot',
       decryptAllButton: 'Decriptează tot',
@@ -1850,8 +1841,6 @@ export const messages = {
     search: 'Căutare',
     qr: {
       code: 'Cod QR',
-      description:
-        'Utilizați acest cod QR pentru a vă conecta la contul dvs. pe dispozitivele mobile. Această imagine este o parolă, nu o da nimănui!',
     },
     breakdown: {
       request:
@@ -2052,8 +2041,7 @@ export const messages = {
     },
     supportAlert: {
       title: 'Soporte',
-      text:
-        'Si tienes dudas o sugerencias, siéntete libre de <a href="mailto:todorant@borodutch.com">enviarme un email</a>, <a href="https://t.me/borodutch" target="_blank">contactarme en Telegram</a> o <a href="https://t.me/todorant_feedback" target="_blank">unirte a nuestra comunidad en Telegram</a>.',
+      text: 'Si tienes dudas o sugerencias, siéntete libre de <a href="mailto:todorant@borodutch.com">enviarme un email</a>, <a href="https://t.me/borodutch" target="_blank">contactarme en Telegram</a> o <a href="https://t.me/todorant_feedback" target="_blank">unirte a nuestra comunidad en Telegram</a>.',
     },
     loginMobile: {
       telegram: {
@@ -2109,49 +2097,40 @@ export const messages = {
         reviews: [
           {
             name: 'Sergey Romanov',
-            text:
-              'Los mensajes en la parte de la suscripción son lindos :)\n\nGracias por un servicio simple y próspero por el servicio ideal. Resultó que no sólo ayuda a ser productivo sino también proactivo. Pequeñas mejoras diarias mejoran la vida con confianza, y la mente libre está constantemente buscando cómo llenar la lista de tareas vacía para que pueda sentir el placer de completar tareas una y otra vez, y es una ruta directa hacia la mejora de todo lo que me rodea.\n\nCon todo, no importa cuán simple sea a primera vista Todorant, puede convertirse en un aliado fiel en cualquier negocio. Gracias, Nikita, por desatar los aspectos de la verdadera productividad y compartirlos con nosotros en una solución conveniente.\n\nUn agradecido suscriptor de Todorant.',
+            text: 'Los mensajes en la parte de la suscripción son lindos :)\n\nGracias por un servicio simple y próspero por el servicio ideal. Resultó que no sólo ayuda a ser productivo sino también proactivo. Pequeñas mejoras diarias mejoran la vida con confianza, y la mente libre está constantemente buscando cómo llenar la lista de tareas vacía para que pueda sentir el placer de completar tareas una y otra vez, y es una ruta directa hacia la mejora de todo lo que me rodea.\n\nCon todo, no importa cuán simple sea a primera vista Todorant, puede convertirse en un aliado fiel en cualquier negocio. Gracias, Nikita, por desatar los aspectos de la verdadera productividad y compartirlos con nosotros en una solución conveniente.\n\nUn agradecido suscriptor de Todorant.',
           },
           {
             name: 'Dinislam Sad',
-            text:
-              'Las principales ventajas que a mí (y estoy seguro que también a otros) me gustaron.\n1. Interfaz simple y conveniente.\n2. Las tareas pospuestas se vuelven sapos automáticamente y existe la opción de marcar una tarea como sapo desde el inicio.\n3. El comando /done era algo obligado, y gracias por ello, Nikita. Yo usé Todoist, Wunderlist, Bitrix24. Todos eran demasiado complicados.\n4. Bot de Telegram.',
+            text: 'Las principales ventajas que a mí (y estoy seguro que también a otros) me gustaron.\n1. Interfaz simple y conveniente.\n2. Las tareas pospuestas se vuelven sapos automáticamente y existe la opción de marcar una tarea como sapo desde el inicio.\n3. El comando /done era algo obligado, y gracias por ello, Nikita. Yo usé Todoist, Wunderlist, Bitrix24. Todos eran demasiado complicados.\n4. Bot de Telegram.',
           },
           {
             name: 'Aleksei Kaut',
-            text:
-              'Después de que creé las primeras tareas y cambié a la pestaña "Actual" me sorprendí de que tenía solamente una tarea y de que necesitaba completarla antes de continuar. Esta idea de una sola tarea a la vez y plena concentración en ella me pareció sorprendente, parece obvio, pero no podía usarla antes.\n\nUsualmente rastreaba tareas e ideas en Notas, lo que debería hacerse pronto, pero no lo enfoqué como un sistema. He estado utilizando el servicio durante un par de semanas, no de manera muy activa, pero creo que esta es una forma muy sólida de sistematizar los asuntos y las tareas.\n\n¡Gracias por tu trabajo!',
+            text: 'Después de que creé las primeras tareas y cambié a la pestaña "Actual" me sorprendí de que tenía solamente una tarea y de que necesitaba completarla antes de continuar. Esta idea de una sola tarea a la vez y plena concentración en ella me pareció sorprendente, parece obvio, pero no podía usarla antes.\n\nUsualmente rastreaba tareas e ideas en Notas, lo que debería hacerse pronto, pero no lo enfoqué como un sistema. He estado utilizando el servicio durante un par de semanas, no de manera muy activa, pero creo que esta es una forma muy sólida de sistematizar los asuntos y las tareas.\n\n¡Gracias por tu trabajo!',
           },
           {
             name: 'Anton',
-            text:
-              'Probé Todorant. Al inicio estaba escéptico (ya he probado muchos servicios de planeación de tareas), pero me di cuenta de que trabaja muy efectivamente y de que es muy fácil de usar.\n\nAdemás, por razones desconocidas para mí, cuando todas las tareas del día están completadas aparece una fuerte satisfacción, la cual estaba ausente en otros planificadores (había una sensación como de "bueno, eso fue todo... ¿o no?").\n\n¡Gracias por tu trabajo!',
+            text: 'Probé Todorant. Al inicio estaba escéptico (ya he probado muchos servicios de planeación de tareas), pero me di cuenta de que trabaja muy efectivamente y de que es muy fácil de usar.\n\nAdemás, por razones desconocidas para mí, cuando todas las tareas del día están completadas aparece una fuerte satisfacción, la cual estaba ausente en otros planificadores (había una sensación como de "bueno, eso fue todo... ¿o no?").\n\n¡Gracias por tu trabajo!',
           },
           {
             name: 'Willsey Paslen',
-            text:
-              'Gracias por el estupendo servicio. Suficiente tiempo ha pasado, así que ahora puedo decir definitivamente: me funciona. Gracias, Nikita 😁 y buena suerte con la app.',
+            text: 'Gracias por el estupendo servicio. Suficiente tiempo ha pasado, así que ahora puedo decir definitivamente: me funciona. Gracias, Nikita 😁 y buena suerte con la app.',
           },
           {
             name: 'Igor Malinkin',
-            text:
-              'Comencé al fin a hacer algo con Todorant, así que mi productividad subió desde 0.',
+            text: 'Comencé al fin a hacer algo con Todorant, así que mi productividad subió desde 0.',
           },
           {
             name: 'Vladimir Dubenko',
-            text:
-              'Tu servicio es increíble en términos de al menos tres cosas:\n1. Conveniente:¡es minimalista!\n2. Inculca un hábito.\n3. Aunque parezca extraño, no te obliga a pensar racionalmente.\n\nSoy irracional por naturaleza, Simplemente no puedo dirigir un proyecto (me agoto rápidamente). ¡Mi vida es la multitarea! 3 proyectos al mismo tiempo son fáciles, pero 3 no es suficiente... 7 suena mucho mejor. Y tu servicio permite conseguir esto. Es la alternancia de tareas la que previene que el cerebro se fatigue en una dirección particular. Y, de alguna manera mágica, alterna tareas de un proyecto y otro.',
+            text: 'Tu servicio es increíble en términos de al menos tres cosas:\n1. Conveniente:¡es minimalista!\n2. Inculca un hábito.\n3. Aunque parezca extraño, no te obliga a pensar racionalmente.\n\nSoy irracional por naturaleza, Simplemente no puedo dirigir un proyecto (me agoto rápidamente). ¡Mi vida es la multitarea! 3 proyectos al mismo tiempo son fáciles, pero 3 no es suficiente... 7 suena mucho mejor. Y tu servicio permite conseguir esto. Es la alternancia de tareas la que previene que el cerebro se fatigue en una dirección particular. Y, de alguna manera mágica, alterna tareas de un proyecto y otro.',
           },
           {
             name: 'Maksim Alekseyevich',
             username: 'MMAradiology',
-            text:
-              'No puedo decir que mi vida haya cambiado usando Todorant. ¿Puedo decir que esta es una aplicación/página web significativa y muy útil? Sí, mil veces sí.\n\nMe gusta Todorant, me permite liberar mi "memoria de operación" y me permite concentrarme en resolver problemas, no en recordarlos. Como dijo correctamente Nikita (el creador): con uso constante y correcto, las tareas que solían causar verdadero terror bíblico dejarán de aparecer. Y esto no sucederá porque las tareas complejas dejen de llegar. Será claro para ti (y para mí, y para todos) que "el camino será dominado por aquellos caminando", "el camino de las mil millas comienza con un paso".',
+            text: 'No puedo decir que mi vida haya cambiado usando Todorant. ¿Puedo decir que esta es una aplicación/página web significativa y muy útil? Sí, mil veces sí.\n\nMe gusta Todorant, me permite liberar mi "memoria de operación" y me permite concentrarme en resolver problemas, no en recordarlos. Como dijo correctamente Nikita (el creador): con uso constante y correcto, las tareas que solían causar verdadero terror bíblico dejarán de aparecer. Y esto no sucederá porque las tareas complejas dejen de llegar. Será claro para ti (y para mí, y para todos) que "el camino será dominado por aquellos caminando", "el camino de las mil millas comienza con un paso".',
           },
           {
             name: 'Kiku Reise',
-            text:
-              'He ordenado mis tareas del trabajo, de programación y de mis pasatiempos. Incluso esta opinión fue escrita gracias a Todorant. Solamente una tarea, sin complicaciones. Ese es todo el punto de la app: me ayudó a concentrarme sin tener que estar evadiendo mis tareas constantemente. \n\nPor supuesto, puedes definir tareas y olvidarte de ellas, pero para mí es más simple abrir de nuevo una aplicación minimalista con una sola tarea que gastar medio día buscando en qué tarea trabajar ahora de cientos planeadas en Telegram o Notion.\n\nEstuve especialmente complacido con la actualización que trajo los hashtags: ahora todas las estadísticas están en la palma de mi mano, puedo rastrear y compartir con mis amigos cuántas tareas he completado este mes.\n\n¡Muchas gracias por!',
+            text: 'He ordenado mis tareas del trabajo, de programación y de mis pasatiempos. Incluso esta opinión fue escrita gracias a Todorant. Solamente una tarea, sin complicaciones. Ese es todo el punto de la app: me ayudó a concentrarme sin tener que estar evadiendo mis tareas constantemente. \n\nPor supuesto, puedes definir tareas y olvidarte de ellas, pero para mí es más simple abrir de nuevo una aplicación minimalista con una sola tarea que gastar medio día buscando en qué tarea trabajar ahora de cientos planeadas en Telegram o Notion.\n\nEstuve especialmente complacido con la actualización que trajo los hashtags: ahora todas las estadísticas están en la palma de mi mano, puedo rastrear y compartir con mis amigos cuántas tareas he completado este mes.\n\n¡Muchas gracias por!',
           },
         ],
       },
